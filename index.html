@@ -1,2 +1,23 @@
-Hello World
-test
+<!DOCTYPE html>
+<html>
+
+<head>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/global.css" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+
+<script src="app.js"></script>
+
+</head>
+
+<body ng-app="app">
+
+<a href="#/simplemvc">SimpleMVC</a><br/>
+<a href="#/simplemysql">SimpleMySQL</a><br/>
+
+<div ng-view></div>
+
+</body>
+</html>

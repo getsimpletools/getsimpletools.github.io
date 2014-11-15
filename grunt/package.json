@@ -1,0 +1,15 @@
+{
+    "name" : "Getsimpletools",
+    "description": "Getsimpletools",
+    "version" : "1.0.1",
+    "author" : "Marcin Rosinski",
+    "private" : true,
+
+    "devDependencies" : {
+        "grunt":                   		">=0.4.1",
+        "grunt-contrib-uglify":         "*",
+        "grunt-contrib-watch":          "*",
+        "grunt-contrib-less":			"*",
+        "grunt-import":                 "*"
+    } 
+}
