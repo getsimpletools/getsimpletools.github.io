@@ -1,8 +1,48 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
 
-<h1>Getting started with SimpleMVC</h1>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/global.css" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+
+<script src="/prism.js"></script>
+<link href="/prism.css" rel="stylesheet">
+
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+	<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="javascript:void(0)">Simpletools</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Getting started <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/getting-started/simplemvc.html">SimpleMVC</a></li>
+            <li><a href="/getting-started/simplemysql.html">SimpleMySQL</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div ng-view id="content"><h1>Getting started with SimpleMVC</h1>
 
 <div class="row">
   <div class="col-sm-9">
@@ -338,4 +378,10 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
         </nav>
 
   </div>
-</div>
+</div></div>
+
+<footer>
+Code licensed under <a href="https://github.com/getsimpletools/simpletools/blob/master/LICENSE">BSD</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+</footer>
+</body>
+</html>
