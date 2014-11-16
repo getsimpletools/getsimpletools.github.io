@@ -2,6 +2,9 @@
 <html>
 
 <head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/global.css" rel="stylesheet">
 
@@ -11,13 +14,16 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 
 <script src="app.js"></script>
+<script src="prism.js"></script>
+
+<link href="prism.css" rel="stylesheet">
 
 </head>
 
-<body ng-app="app">
+<body ng-app="app" data-spy="scroll" data-target=".bs-docs-sidebar">
 
 	<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -43,5 +49,8 @@
 
 <div ng-view id="content"></div>
 
+<footer>
+Code licensed under <a href="https://github.com/getsimpletools/simpletools/blob/master/LICENSE">BSD</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+</footer>
 </body>
 </html>

@@ -26,15 +26,39 @@ var module = angular.module("app", ['ngRoute']);
 
         }]);
 
-module.controller("RouteController", function($scope) {
 
+
+module.controller("RouteController", function($scope) {
+    $scope.$on('$viewContentLoaded', function(){
+        
+        Prism.highlightAll();
+
+        setTimeout(function(){
+            $('[data-spy="scroll"]').each(function () {
+                var $spy = $(this).scrollspy('refresh')
+            });
+
+            $('.bs-docs-sidebar').affix({offset:{top:160}});
+        },100);
+       
+        
+    });
 });
 
 $(function(){
 
-    $('body').scrollspy({
-        target: '.bs-docs-sidebar',
-        offset: 40
-    });
+
+/*
+ setTimeout(function(){
+    if($('.bs-docs-sidebar').length)
+    {
+        $('body').scrollspy({
+            target: '.bs-docs-sidebar'
+        });
+
+        $('.bs-docs-sidebar').data('spyloaded',1);
+    }
+},1000);
+*/
 
 });
