@@ -3,6 +3,9 @@
 
 <head>
 
+<title>{{ page.title }}</title>
+<meta name="author" content="{{ page.author }}">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -20,33 +23,35 @@
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
 
-	<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Simpletools</a>
-    </div>
+<div id="wrapper">
+  	<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Simpletools</a>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Getting started <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="/getting-started/simplemvc.html">SimpleMVC</a></li>
-            <li><a href="/getting-started/simplemysql.html">SimpleMySQL</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Getting started <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/getting-started/simplemvc.html">SimpleMVC</a></li>
+              <li><a href="/getting-started/simplemysql.html">SimpleMySQL</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
-<div ng-view id="content">{{ content }}</div>
+  <div ng-view id="content">{{ content }}</div>
 
-<footer>
-Code licensed under <a href="https://github.com/getsimpletools/simpletools/blob/master/LICENSE">BSD</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.<br />
-Powered by <a href="http://jekyllrb.com/">Jekyll</a>, hosted on <a href="https://pages.github.com/">Github Pages</a>.
+  <footer>
+  Code licensed under <a href="https://github.com/getsimpletools/simpletools/blob/master/LICENSE">BSD</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.<br />
+  Powered by <a href="http://jekyllrb.com/">Jekyll</a>, hosted on <a href="https://pages.github.com/">Github Pages</a>.
 </footer>
+</div>
 </body>
 </html>
