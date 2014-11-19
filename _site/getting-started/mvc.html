@@ -3,7 +3,7 @@
 
 <head>
 
-<title>Getting started with Simpletools\MVC</title>
+<title>Getting started with Simpletools\Mvc</title>
 <meta name="author" content="Marcin Rosinski">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -37,13 +37,13 @@
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Getting started <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/getting-started/mvc.html">MVC</a></li>
+              <li><a href="/getting-started/mvc.html">\Mvc</a></li>
             </ul>
           </li>
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">API Reference <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/api-reference/mvc.html">MVC</a></li>
+              <li><a href="/api-reference/mvc.html">\Mvc</a></li>
             </ul>
           </li>
         </ul>
@@ -52,14 +52,14 @@
   </nav>
 
   <div ng-view id="content"><div class="content">
-<h1>Getting started with Simpletools\MVC</h1>
+<h1>Getting started with Simpletools\Mvc</h1>
 
 <div class="row">
   <div class="col-sm-9">
     
         <section id="introduction" class="group">
            
-            <p class="subhead">Simpletools\MVC has been designed to provide you with all benefits of the Model-View-Controller software architectural pattern. Simpletools\MVC provides scalability, performance and ease of use out of the box.</p>
+            <p class="subhead">Simpletools\Mvc has been designed to provide you with all benefits of the Model-View-Controller software architectural pattern. Simpletools\Mvc provides scalability, performance and ease of use out of the box.</p>
 
             <div id="requirements" class="subgroup">
                 <h3>Requirements</h3>
@@ -70,14 +70,14 @@
         </section>
         <section id="setup" class="group">
             <h2>Setup</h2>
-            <p>Simpletools\MVC is very easy to setup, all you need is to include just Simpletools\MVC.php into your project and organise your application files and folders in the normalised way. Below we have demonstrated all you need to get your first app up and running using Simpletools\MVC.</p>
+            <p>Simpletools\Mvc is very easy to setup, all you need is to include just Simpletools\Mvc.php into your project and organise your application files and folders in the normalised way. Below we have demonstrated all you need to get your first app up and running using Simpletools\Mvc.</p>
            
             <div id="directory" class="subgroup">
                 <h3>Directory structure</h3>
                 <p>
-                    Simpletools\MVC requires a structural approach to your application directory organisation therefore making it easy to understand, document and maintain.</p>
+                    Simpletools\Mvc requires a structural approach to your application directory organisation therefore making it easy to understand, document and maintain.</p>
                 <p>
-                    In order to get your application to work with Simpletools\MVC the following initial directory structure is required:
+                    In order to get your application to work with Simpletools\Mvc the following initial directory structure is required:
                 </p>
 
                 <pre class="line-numbers">
@@ -106,7 +106,7 @@
                 <pre class="line-numbers"><code class="language-php">&lt;?php
     require_once('../libs/Simpletools/Mvc.php'); 
 
-    $mvc = Simpletools\Mvc::settings(array(
+    $mvc = \Simpletools\Mvc::settings(array(
         'applicationDir' => '../application'
     ));
 
@@ -144,7 +144,7 @@
             <div id="errors-handler" class="subgroup">
                 <h3>Errors handler</h3>
                 <p>
-                    In addition to creating controllers, actions and views allowing our application to handle desired user requests it is highly recommended to handle requests which we have not intended to support in the first place, e.g. requests to not existing sections of our application. You can find more about <a href="#error-handling">Error handling</a> under <a href="#components">Components</a>. Error controller is a very simple class which Simpletools\MVC uses in case of requests which can't be routed anywhere else. An example of basic Error controller, action and view we are going to use in our application can be seen below.
+                    In addition to creating controllers, actions and views allowing our application to handle desired user requests it is highly recommended to handle requests which we have not intended to support in the first place, e.g. requests to not existing sections of our application. You can find more about <a href="#error-handling">Error handling</a> under <a href="#components">Components</a>. Error controller is a very simple class which Simpletools\Mvc uses in case of requests which can't be routed anywhere else. An example of basic Error controller, action and view we are going to use in our application can be seen below.
                 </p>
                 <p> 
                 <b>ErrorController.php</b>:
@@ -212,7 +212,7 @@
 <section id="components" class="group">
             <h2>Components</h2>
             <p>
-                Simpletools\MVC includes all components needed to run proper MVC application. We have listed and described their role below.
+                Simpletools\Mvc includes all components needed to run proper MVC application. We have listed and described their role below.
             </p>
 
             <div id="controllers" class="subgroup">
@@ -232,16 +232,16 @@
                    Actions are controller's class methods. They can request data from models, set and update them and then send required data to a view for the final processing.
                 </p>
                 <p>
-                   Actions are a glue between controllers and views and can pass any data to a view by using the following property:
+                   Actions are a glue between controllers and views and can pass any data to a view by using the following method available for each controller:
                 </p>
 
-                <pre><code class="language-php">$this->_view</code></pre>
+                <pre><code class="language-php">$this->setViewProperty($key,$value);</code></pre>
 
                 <p>
-                    So to pass a username into a view you can use the following code:
+                    So to pass a variable called foo with value bar into a view you can use the following code:
                 </p>
 
-                <pre><code class="language-php">$this->_view->username = "Foo";</code></pre>
+                <pre><code class="language-php">$this->setViewProperty("foo","bar");</code></pre>
 
                 <p>
                     $this->_view can be extened with any property which in returned can then be access by the view.
@@ -259,7 +259,7 @@
 
                 <p>View can display the above set variable by simply echoing $this->username property:</p>
 
-                <pre><code class="language-php">echo $this->foo; //will result in displaying Bar.</code></pre>
+                <pre><code class="language-php">echo $this->foo; //will result in displaying bar.</code></pre>
                 <p>
                     Views can only access controller's properties explicitly set for them inside the action under $this->_view, any other variables are not visible to views.
                 </p>
@@ -300,7 +300,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
          <section id="routing" class="group">
             <h2>Routing</h2>
             <p>
-                An integral part of any MVC framework, in Simpletools\MVC built in directly into the library so nothing to setup, all works out of box.
+                An integral part of any MVC framework, in Simpletools\Mvc built in directly into the library so nothing to setup, all works out of box.
             </p>
 
             <p>
@@ -310,7 +310,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
             <div id="principles" class="subgroup">
                 <h3>Routing principles</h3>
                  <p>
-                Simpletools\MVC framework handles requests dispatching by parsing the path section of the URL in the following manner:
+                Simpletools\Mvc framework handles requests dispatching by parsing the path section of the URL in the following manner:
 
                 <pre><code class="language-http">http://example.com/{controller}/{action}</pre></code>
 
@@ -323,7 +323,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                 <pre><code class="language-http">http://example.com/user/login</pre></code>
 
                 <p>
-                    The following url results in Simpletools\MVC invoking UserController.php and triggering ->loginAction() method of that controller, you can see source of such controller below:
+                    The following url results in Simpletools\Mvc invoking UserController.php and triggering ->loginAction() method of that controller, you can see source of such controller below:
                 </p>
 
                 <pre class="line-numbers"><code class="language-php">&lt;?php
@@ -337,24 +337,24 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
 ?&gt;</code></pre>
 
             <p>
-                After executing loginAction() by default Simpletools\MVC moves to rendering view located inside Views/User/login.phtml and completing the routing cycle.
+                After executing loginAction() by default Simpletools\Mvc moves to rendering view located inside Views/User/login.phtml and completing the routing cycle.
             </p>
 
             <p>
-               In case of empty values for controller or actions inside the requested url path (<a href="#routing-naming-convention">more about routing naming convention</a>) Simpletools\MVC defaults all to index so for controller it results with IndexController, and for action indexAction().
+               In case of empty values for controller or actions inside the requested url path (<a href="#routing-naming-convention">more about routing naming convention</a>) Simpletools\Mvc defaults all to index so for controller it results with IndexController, and for action indexAction().
             </p>
             </div>
 
             <div id="routing-naming-convention" class="subgroup">
                 <h3>Naming convention</h3>
                 <p>
-                    To prevent any confusion regarding how to name controller, action or view's Simpletools\MVC is normalising all before triggering each component. The rules how it works for each component have been listed below.
+                    To prevent any confusion regarding how to name controller, action or view's Simpletools\Mvc is normalising all before triggering each component. The rules how it works for each component have been listed below.
                 </p>
                 <ul>
                     <li>
                         <b>Controllers</b>
                         <p>
-                            Before deciding which controller to use Simpletools\MVC is parsing the requested name as follow:
+                            Before deciding which controller to use Simpletools\Mvc is parsing the requested name as follow:
                         </p>
                         <ol>
                             <li>lowering down all characters</li>
@@ -368,7 +368,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                     <li>
                         <b>Actions</b>
                         <p>
-                            Before deciding which action to trigger Simpletools\MVC is parsing the requested name as follow:
+                            Before deciding which action to trigger Simpletools\Mvc is parsing the requested name as follow:
                         </p>
                         <ol>
                             <li>lowering down all characters</li>
@@ -381,7 +381,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                     <li>
                         <b>Views folder</b>
                         <p>
-                            To decide in which folder to find a requested view, Simpletools\MVC is parsing the requested name as follow
+                            To decide in which folder to find a requested view, Simpletools\Mvc is parsing the requested name as follow
                         </p>
                         <ol>
                             <li>lowering down all characters</li>
@@ -394,7 +394,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                     <li>
                         <b>Views</b>
                         <p>
-                            Before deciding which view to render Simpletools\MVC is parsing the requested name as follow:
+                            Before deciding which view to render Simpletools\Mvc is parsing the requested name as follow:
                         </p>
                         <ol>
                             <li>lowering down all characters</li>
@@ -421,8 +421,135 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
          <section id="namespacing" class="group">
             <h2>Namespacing</h2>
             <p>
-                Simpletools\MVC provides an extra feature allowing you to organise your application into more compartmental way enabling you to build apps within an app e.g /api/v1 which can have its own models, controllers, actions and views.
+                Simpletools\Mvc provides unique feature allowing you to organise your application into even more compartmental way enabling you to build apps within an app e.g /api/v1, /api/v2 having its own models, controllers, actions and views yet being able to share anything between themselves.
             </p>
+
+            <div id="ns-setup" class="subgroup">
+                <h3>Setup</h3>
+                <p>
+                    So to demonstrate how to setup and why to use a routing namespacing \Simpletools\Mvc provides lets assume that we need to build an api under our already existing application we have built under the <a href="#setup">Setup</a> section. Also, to make it even more challenging lets assume that we are required to version our api in case we need to have some not backward compatible versions in the future so lets stick to /api/v1, also lets assume we need to provide foo/bar (foo - controller, bar - action) endpoint for our api so the full path looks like /api/v1/foo/bar
+                </p>
+                <p>
+                    As you already know at that point without the routing namespacing you would endup with api as a controller and v1 as its action in which case the question arise, where and how to accommodate for all the endpoints any api must have? And that question is a reason why \Simpletools\Mvc provides the routing namespacing.
+                </p>
+                <p>
+                     OK, so lets go to the setup so you can how easy is to solve all those challenges and how clean your application's structure will be.
+                </p>
+                <p>
+                    First thing we need to do is to register desired namespaces so \Simpletools\Mvc can differentiate them from normal controllers and actions.
+                </p>
+
+                <p>
+                    So to enable /api/v1/foo/bar using the example.com directory structure and bootstrap we have created <a href="#setup">above</a> we need to:
+                </p>
+
+                <ol>
+                    <li>modify our bootstrap slightly to register our /api/v1 namespace:
+                <pre class="line-numbers" data-line="6-9"><code class="language-php" >&lt;?php
+    require_once('../libs/Simpletools/Mvc.php'); 
+
+    $mvc = \Simpletools\Mvc::settings(array(
+        'applicationDir' => '../application',
+        'routingNamespaces' => array(
+            "api/v1"
+        )
+    ));
+
+    $mvc->run();
+?&gt;</code></pre>
+                    </li>
+                    <li>add extra directories, controllers and views into our application structure to accommodate for the /api/v1/foo/bar:
+                        <pre class="line-numbers" data-line="4-6,10-11,13-16">
+<code class="language-bash">app/
+    application/
+        controllers/
+            Api/
+                V1/
+                    FooController.php
+            ErrorController.php
+            IndexController.php
+        models/
+            Api/
+                V1/
+        views/
+            Api/
+                V1/
+                    Foo/
+                        bar.phtml
+            Index/
+                index.phtml
+            Error/
+                error.phtml
+    libs/
+        Simpletools/
+            Mvc.php
+    public/
+        bootstrap.php</code></pre>
+
+                    <li>
+                        Create Foo controller with barAction:
+
+                        <pre class="line-numbers"><code class="language-php">&lt;?php
+    class FooController extends \Simpletools\Mvc\Controller
+    {
+        public function barAction()
+        {
+
+        }
+    }
+?&gt;</code></pre>
+                    </li>
+
+                    <li>
+                        Create bar.phtml view
+
+                        <pre class="line-numbers"><code class="language-markup">&lthtml&gt;
+    &ltbody&gt;Hello World, I am /api/v1/foo/bar view!&lt/body&gt;
+&lt/html&gt;</code></pre>
+                    </li>
+                </ol>
+
+                <p>And voila, job done!</p>
+            </div>
+
+            <div id="ns-controllers" class="subgroup">
+                <h3>Controllers</h3>
+                <p>Namespacing allows controllers to communicate between each other even if they are living outside of the current namespace. You can forward requests to controllers in different namespaces or root directory e.g. to root request from our \Api\V1\FooController to \IndexController use:</p>
+
+                <pre><code class="language-php">$this->forward('/Index','index');</code></pre>
+
+                <p>or from '\IndexController to \Api\V1\FooController</p>
+
+                <pre><code class="language-php">$this->forward('/Api/V1/FooController','bar');</code></pre>
+
+                <p>for the convenience both characters <b>\</b> and <b>/</b> are accepted as namespace separators.</p>
+            </div>
+
+            <div id="ns-views" class="subgroup">
+                <h3>Views</h3>
+                <p>As in case of controllers namespacing allows actions to render any views, by default the view in the current namespace is being rendered but to render view from different namespace you can simply:</p>
+
+                <pre><code class="language-php">$this->render('\index');</code></pre>
+
+                <p>for the convenience both characters <b>\</b> and <b>/</b> are accepted as namespace separators.</p>
+            </div>
+
+            <div id="ns-models" class="subgroup">
+                <h3>Models</h3>
+                <p>With namespaces models are getting extra organisation layer in form of its dedicate folders under models directory and as well as controllers can forward requests to any other places same with models, controllers can access any moder they wish including those outside of their currently active namespace. E.g. to access api/v1 models from api/v2 located controller:</p>
+
+                <pre><code class="language-php">\Simpletools\Mvc\Model::getInstance('/api/v1');</code></pre>
+
+                <p>for the convenience both characters <b>\</b> and <b>/</b> are accepted as namespace separators.</p>
+            </div>
+
+             <div id="ns-errors" class="subgroup">
+                <h3>Errors</h3>
+                <p>
+                    ErrorController and view are optional in case of namespaces, in case of their non existence default one from the root directory will be used but you are free to overwrite them by creating a different one under each namespace.
+                </p>
+            </div>
+
             </section>
 
 
@@ -475,10 +602,11 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                         <li><a href="#ns-controllers">Controllers</a></li>
                         <li><a href="#ns-views">Views</a></li>
                         <li><a href="#ns-models">Models</a></li>
+                        <li><a href="#ns-errors">Error handling</a></li>
                     </ul>
                 </li>
                  <li>
-                    <a href="https://github.com/getsimpletools/simpletools/blob/master/Simpletools\MVC.php" target="_blank">Download</a>
+                    <a href="https://github.com/getsimpletools/simpletools/blob/master/Simpletools\Mvc.php" target="_blank">Download</a>
                 </li>
             </ul>
         </nav>
