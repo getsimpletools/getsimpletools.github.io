@@ -370,7 +370,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
 
 
          <section id="namespacing" class="group">
-            <h2>Routing namespacing</h2>
+            <h2>Routing namespaces</h2>
             <p>
                 Simpletools\Mvc provides unique feature allowing you to organise your application into even more compartmental way enabling you to build apps within an app e.g /api/v1, /api/v2 having its own models, controllers, actions and views yet being able to share anything between themselves.
             </p>
@@ -378,10 +378,10 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
             <div id="ns-setup" class="subgroup">
                 <h3>Setup</h3>
                 <p>
-                    So to demonstrate how to setup and why to use a routing namespacing \Simpletools\Mvc provides lets assume that we need to build an api under our already existing application we have built under the <a href="#setup">Setup</a> section. Also, to make it even more challenging lets assume that we are required to version our api in case we need to have some not backward compatible versions in the future so lets stick to /api/v1, also lets assume we need to provide foo/bar (foo - controller, bar - action) endpoint for our api so the full path looks like /api/v1/foo/bar
+                    So to demonstrate how to setup and why to use a routing namespaces \Simpletools\Mvc provides lets assume that we need to build an api under our already existing application we have built under the <a href="#setup">Setup</a> section. Also, to make it even more challenging lets assume that we are required to version our api in case we need to have some not backward compatible versions in the future so lets stick to /api/v1, also lets assume we need to provide foo/bar (foo - controller, bar - action) endpoint for our api so the full path looks like /api/v1/foo/bar
                 </p>
                 <p>
-                    As you already know at that point without the routing namespacing you would endup with api as a controller and v1 as its action in which case the question arise, where and how to accommodate for all the endpoints any api must have? And that question is a reason why \Simpletools\Mvc provides the routing namespacing.
+                    As you already know at that point without the routing namespaces you would endup with api as a controller and v1 as its action in which case the question arise, where and how to accommodate for all the endpoints any api must have? And that question is a reason why \Simpletools\Mvc provides the routing namespaces.
                 </p>
                 <p>
                      OK, so lets go to the setup so you can how easy is to solve all those challenges and how clean your application's structure will be.
@@ -547,7 +547,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                     </ul>
                 </li>
                 <li>
-                    <a href="#namespacing" target="_self">Routing namespacing</a>
+                    <a href="#namespacing" target="_self">Routing namespaces</a>
                     <ul class="nav nav-stacked">
                         <li><a href="#ns-setup">Setup</a></li>
                         <li><a href="#ns-controllers">Controllers</a></li>
