@@ -55,10 +55,10 @@ title: Getting started with Simpletools\Mvc
                 <h3>Bootstrapping</h3>
                 <p>After creating the initial application structure as described above we can move on to create a body of our bootstrap.php script being responsible for booting up our application. The source of that file is very simple:</p>
                 <pre class="line-numbers"><code class="language-php">&lt;?php
-    require_once('../libs/Simpletools/Mvc.php'); 
+    require_once("../libs/Simpletools/Mvc.php"); 
 
     $mvc = \Simpletools\Mvc::settings(array(
-        'applicationDir' => '../application'
+        "applicationDir" => "../application"
     ));
 
     $mvc->run();
@@ -95,7 +95,7 @@ title: Getting started with Simpletools\Mvc
             <div id="errors-handler" class="subgroup">
                 <h3>Errors handler</h3>
                 <p>
-                    In addition to creating controllers, actions and views allowing our application to handle desired user requests it is highly recommended to handle requests which we have not intended to support in the first place, e.g. requests to not existing sections of our application. You can find more about <a href="#error-handling">Error handling</a> under <a href="#components">Components</a>. Error controller is a very simple class which Simpletools\Mvc uses in case of requests which can't be routed anywhere else. An example of basic Error controller, action and view we are going to use in our application can be seen below.
+                    In addition to creating controllers, actions and views allowing our application to handle desired user requests it is highly recommended to handle requests which we have not intended to support in the first place, e.g. requests to not existing sections of our application. You can find more about <a href="#error-handling">Error handling</a> under <a href="#components">Components</a>. Error controller is a very simple class which Simpletools\Mvc uses in case of requests which can"t be routed anywhere else. An example of basic Error controller, action and view we are going to use in our application can be seen below.
                 </p>
                 <p> 
                 <b>ErrorController.php</b>:
@@ -169,7 +169,7 @@ title: Getting started with Simpletools\Mvc
             <div id="controllers" class="subgroup">
                 <h3>Controllers</h3>
                 <p>
-                   Controllers are responsible for arbitrating the application flow. They are responsible for application's logic - you can look at them as a proxy between your models and application views.
+                   Controllers are responsible for arbitrating the application flow. They are responsible for application"s logic - you can look at them as a proxy between your models and application views.
                 </p>
                 <p>
                     Each controller has a number of methods corresponding to possible actions - all suffixed with a word Action. Actions are a glue between controllers and views and can pass any data to a view.
@@ -180,7 +180,7 @@ title: Getting started with Simpletools\Mvc
                 <h3>Actions</h3>
 
                  <p>
-                   Actions are controller's class methods. They can request data from models, set and update them and then send required data to a view for the final processing.
+                   Actions are controller"s class methods. They can request data from models, set and update them and then send required data to a view for the final processing.
                 </p>
                 <p>
                    Actions are a glue between controllers and views and can pass any data to a view by using the following method available for each controller:
@@ -204,7 +204,7 @@ title: Getting started with Simpletools\Mvc
 
                 <p>Views are responsible for the presentation layer. They can access data provided to them by controller actions and present them to a user.</p>
 
-                <p>Below you can see an example of a controller's action sending data to a view</p>
+                <p>Below you can see an example of a controller"s action sending data to a view</p>
 
                 <pre><code class="language-php">$this->setViewProperty("foo","Bar");</code></pre>
 
@@ -212,7 +212,7 @@ title: Getting started with Simpletools\Mvc
 
                 <pre><code class="language-php">echo $this->foo; //will result in displaying bar.</code></pre>
                 <p>
-                    Views can only access controller's properties explicitly set for them inside the action under $this->_view, any other variables are not visible to views.
+                    Views can only access controller"s properties explicitly set for them inside the action under $this->_view, any other variables are not visible to views.
                 </p>
             </div>
 
@@ -235,10 +235,10 @@ title: Getting started with Simpletools\Mvc
     }
 ?&gt;</code></pre>
 
-                <p>Models can be accessed inside the controller's actions by using the following command:</p>
+                <p>Models can be accessed inside the controller"s actions by using the following command:</p>
 
                 <pre class="line-numbers"><code class="language-php">//just a model name - Foo, no need for affix - Model/FooModel - here
-$myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
+$myModel = \Simpletools\Mvc\Model::getInstance("Foo"); </code></pre>
 
                 <p>Models can have any methods you wish as well as they can be extended by any other classes.</p>
 
@@ -299,7 +299,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
             <div id="routing-naming-convention" class="subgroup">
                 <h3>Naming convention</h3>
                 <p>
-                    To prevent any confusion regarding how to name controller, action or view's Simpletools\Mvc is normalising all before triggering each component. The rules how it works for each component have been listed below.
+                    To prevent any confusion regarding how to name controller, action or view"s Simpletools\Mvc is normalising all before triggering each component. The rules how it works for each component have been listed below.
                 </p>
                 <ul>
                     <li>
@@ -384,7 +384,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                     As you already know at that point without the routing namespaces you would endup with api as a controller and v1 as its action in which case the question arise, where and how to accommodate for all the endpoints any api must have? And that question is a reason why \Simpletools\Mvc provides the routing namespaces.
                 </p>
                 <p>
-                     OK, so lets go to the setup so you can how easy is to solve all those challenges and how clean your application's structure will be.
+                     OK, so lets go to the setup so you can how easy is to solve all those challenges and how clean your application"s structure will be.
                 </p>
                 <p>
                     First thing we need to do is to register desired namespaces so \Simpletools\Mvc can differentiate them from normal controllers and actions.
@@ -397,11 +397,11 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                 <ol>
                     <li>modify our bootstrap slightly to register our /api/v1 namespace:
                 <pre class="line-numbers" data-line="6-8"><code class="language-php" >&lt;?php
-    require_once('../libs/Simpletools/Mvc.php'); 
+    require_once("../libs/Simpletools/Mvc.php"); 
 
     $mvc = \Simpletools\Mvc::settings(array(
-        'applicationDir' => '../application',
-        'routingNamespaces' => array(
+        "applicationDir" => "../application",
+        "routingNamespaces" => array(
             "api/v1"
         )
     ));
@@ -467,11 +467,11 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                 <h3>Controllers</h3>
                 <p>Namespacing allows controllers to communicate between each other even if they are living outside of the current namespace. You can forward requests to controllers in different namespaces or root directory e.g. to root request from our \Api\V1\FooController to \IndexController use:</p>
 
-                <pre><code class="language-php">$this->forward('/Index','index');</code></pre>
+                <pre><code class="language-php">$this->forward("/Index","index");</code></pre>
 
-                <p>or from '\IndexController to \Api\V1\FooController</p>
+                <p>or from "\IndexController to \Api\V1\FooController</p>
 
-                <pre><code class="language-php">$this->forward('/Api/V1/FooController','bar');</code></pre>
+                <pre><code class="language-php">$this->forward("/Api/V1/FooController","bar");</code></pre>
 
                 <p>for the convenience both characters <b>\</b> and <b>/</b> are accepted as namespace separators.</p>
             </div>
@@ -480,7 +480,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                 <h3>Views</h3>
                 <p>As in case of controllers namespacing allows actions to render any views, by default the view in the current namespace is being rendered but to render view from different namespace you can simply:</p>
 
-                <pre><code class="language-php">$this->render('\index');</code></pre>
+                <pre><code class="language-php">$this->render("\index");</code></pre>
 
                 <p>for the convenience both characters <b>\</b> and <b>/</b> are accepted as namespace separators.</p>
             </div>
@@ -489,7 +489,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                 <h3>Models</h3>
                 <p>With namespaces models are getting extra organisation layer in form of its dedicate folders under models directory and as well as controllers can forward requests to any other places same with models, controllers can access any moder they wish including those outside of their currently active namespace. E.g. to access api/v1 models from api/v2 located controller:</p>
 
-                <pre><code class="language-php">\Simpletools\Mvc\Model::getInstance('/api/v1/..');</code></pre>
+                <pre><code class="language-php">\Simpletools\Mvc\Model::getInstance("/api/v1/..");</code></pre>
 
                 <p>for the convenience both characters <b>\</b> and <b>/</b> are accepted as namespace separators.</p>
             </div>
