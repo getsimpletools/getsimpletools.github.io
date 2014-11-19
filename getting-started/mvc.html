@@ -489,7 +489,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
                 <h3>Models</h3>
                 <p>With namespaces models are getting extra organisation layer in form of its dedicate folders under models directory and as well as controllers can forward requests to any other places same with models, controllers can access any moder they wish including those outside of their currently active namespace. E.g. to access api/v1 models from api/v2 located controller:</p>
 
-                <pre><code class="language-php">\Simpletools\Mvc\Model::getInstance('/api/v1');</code></pre>
+                <pre><code class="language-php">\Simpletools\Mvc\Model::getInstance('/api/v1/..');</code></pre>
 
                 <p>for the convenience both characters <b>\</b> and <b>/</b> are accepted as namespace separators.</p>
             </div>
