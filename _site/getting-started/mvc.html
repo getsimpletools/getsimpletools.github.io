@@ -1,33 +1,83 @@
----
-title: Getting started with SimpleMVC
----
+<!DOCTYPE html>
+<html>
 
-<h1>Getting started with SimpleMVC</h1>
+<head>
+
+<title>Getting started with Simpletools\MVC</title>
+<meta name="author" content="Marcin Rosinski">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/global.css" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+
+<script src="/prism.js"></script>
+<link href="/prism.css" rel="stylesheet">
+
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+<div id="wrapper">
+  	<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">\Simpletools</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Getting started <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/getting-started/mvc.html">MVC</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">API Reference <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/api-reference/mvc.html">MVC</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div ng-view id="content"><div class="content">
+<h1>Getting started with Simpletools\MVC</h1>
 
 <div class="row">
   <div class="col-sm-9">
     
         <section id="introduction" class="group">
            
-            <p class="subhead">SimpleMVC has been designed to provide you with all benefits of the Model-View-Controller software architectural pattern. SimpleMVC provides scalability, performance and ease of use out of the box.</p>
+            <p class="subhead">Simpletools\MVC has been designed to provide you with all benefits of the Model-View-Controller software architectural pattern. Simpletools\MVC provides scalability, performance and ease of use out of the box.</p>
 
             <div id="requirements" class="subgroup">
                 <h3>Requirements</h3>
                 <p>
-                    SimpleMVC is compatible with PHP >= 5.* however some extra features such as routing namespacing requires namespaces support available from PHP >= 5.3.*.
+                    Simpletools framework requires PHP version >= 5.3.*.
                 </p>
             </div>
         </section>
         <section id="setup" class="group">
             <h2>Setup</h2>
-            <p>SimpleMVC is very easy to setup, all you need is to include just SimpleMVC.php into your project and organise your application files and folders in the normalised way. Below we have demonstrated all you need to get your first app up and running using SimpleMVC.</p>
+            <p>Simpletools\MVC is very easy to setup, all you need is to include just Simpletools\MVC.php into your project and organise your application files and folders in the normalised way. Below we have demonstrated all you need to get your first app up and running using Simpletools\MVC.</p>
            
             <div id="directory" class="subgroup">
                 <h3>Directory structure</h3>
                 <p>
-                    SimpleMVC requires a structural approach to your application directory organisation therefore making it easy to understand, document and maintain.</p>
+                    Simpletools\MVC requires a structural approach to your application directory organisation therefore making it easy to understand, document and maintain.</p>
                 <p>
-                    In order to get your application to work with SimpleMVC the following initial directory structure is required:
+                    In order to get your application to work with Simpletools\MVC the following initial directory structure is required:
                 </p>
 
                 <pre class="line-numbers">
@@ -43,8 +93,8 @@ title: Getting started with SimpleMVC
             Error/
                 error.phtml
     libs/
-        SimpleTools/
-            SimpleMVC.php
+        Simpletools/
+            Mvc.php
     public/
         bootstrap.php</code></pre>
 
@@ -54,13 +104,13 @@ title: Getting started with SimpleMVC
                 <h3>Bootstrapping</h3>
                 <p>After creating the initial application structure as described above we can move on to create a body of our bootstrap.php script being responsible for booting up our application. The source of that file is very simple:</p>
                 <pre class="line-numbers"><code class="language-php">&lt;?php
-    //Including the main SimpleMVC framework library
-    require_once('../libs/SimpleMVC.php'); 
+    require_once('../libs/Simpletools/Mvc.php'); 
 
-    //Initiallising framework
-    SimpleMVC::settings(array(
-        'application_dir' => '../application'
+    $mvc = Simpletools\Mvc::settings(array(
+        'applicationDir' => '../application'
     ));
+
+    $mvc->run();
 ?&gt;</code></pre>
             </div>
             <div id="index-handler" class="subgroup">
@@ -73,7 +123,7 @@ title: Getting started with SimpleMVC
                 </p>
 
                 <pre class="line-numbers"><code class="language-php">&lt;?php
-    class IndexController extends SimpleControl
+    class IndexController extends \Simpletools\Mvc\Controller
     {
         public function indexAction()
         {
@@ -94,14 +144,14 @@ title: Getting started with SimpleMVC
             <div id="errors-handler" class="subgroup">
                 <h3>Errors handler</h3>
                 <p>
-                    In addition to creating controllers, actions and views allowing our application to handle desired user requests it is highly recommended to handle requests which we have not intended to support in the first place, e.g. requests to not existing sections of our application. You can find more about <a href="#error-handling">Error handling</a> under <a href="#components">Components</a>. Error controller is a very simple class which SimpleMVC uses in case of requests which can't be routed anywhere else. An example of basic Error controller, action and view we are going to use in our application can be seen below.
+                    In addition to creating controllers, actions and views allowing our application to handle desired user requests it is highly recommended to handle requests which we have not intended to support in the first place, e.g. requests to not existing sections of our application. You can find more about <a href="#error-handling">Error handling</a> under <a href="#components">Components</a>. Error controller is a very simple class which Simpletools\MVC uses in case of requests which can't be routed anywhere else. An example of basic Error controller, action and view we are going to use in our application can be seen below.
                 </p>
                 <p> 
                 <b>ErrorController.php</b>:
                 </p>
 
                 <pre class="line-numbers"><code class="language-php">&lt;?php
-    class ErrorController extends SimpleControl
+    class ErrorController extends \Simpletools\Mvc\Controller
     {
         public function errorAction()
         {
@@ -162,7 +212,7 @@ title: Getting started with SimpleMVC
 <section id="components" class="group">
             <h2>Components</h2>
             <p>
-                SimpleMVC includes all components needed to run proper MVC application. We have listed and described their role below.
+                Simpletools\MVC includes all components needed to run proper MVC application. We have listed and described their role below.
             </p>
 
             <div id="controllers" class="subgroup">
@@ -203,13 +253,13 @@ title: Getting started with SimpleMVC
 
                 <p>Views are responsible for the presentation layer. They can access data provided to them by controller actions and present them to a user.</p>
 
-                <p>So to use an example of an action setting a username for the view</p>
+                <p>Below you can see an example of a controller's action sending data to a view</p>
 
-                <pre><code class="language-php">$this->_view->username = "Foo";</code></pre>
+                <pre><code class="language-php">$this->setViewProperty("foo","Bar");</code></pre>
 
                 <p>View can display the above set variable by simply echoing $this->username property:</p>
 
-                <pre><code class="language-php">echo $this->username; //will result in displaying Foo.</code></pre>
+                <pre><code class="language-php">echo $this->foo; //will result in displaying Bar.</code></pre>
                 <p>
                     Views can only access controller's properties explicitly set for them inside the action under $this->_view, any other variables are not visible to views.
                 </p>
@@ -237,7 +287,7 @@ title: Getting started with SimpleMVC
                 <p>Models can be accessed inside the controller's actions by using the following command:</p>
 
                 <pre class="line-numbers"><code class="language-php">//just a model name - Foo, no need for affix - Model/FooModel - here
-$myModel = SimpleModel::getInstance('Foo'); </code></pre>
+$myModel = \Simpletools\Mvc\Model::getInstance('Foo'); </code></pre>
 
                 <p>Models can have any methods you wish as well as they can be extended by any other classes.</p>
 
@@ -250,7 +300,7 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
          <section id="routing" class="group">
             <h2>Routing</h2>
             <p>
-                An integral part of any MVC framework, in SimpleMVC built in directly into the library so nothing to setup, all works out of box.
+                An integral part of any MVC framework, in Simpletools\MVC built in directly into the library so nothing to setup, all works out of box.
             </p>
 
             <p>
@@ -260,7 +310,7 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
             <div id="principles" class="subgroup">
                 <h3>Routing principles</h3>
                  <p>
-                SimpleMVC framework handles requests dispatching by parsing the path section of the URL in the following manner:
+                Simpletools\MVC framework handles requests dispatching by parsing the path section of the URL in the following manner:
 
                 <pre><code class="language-http">http://example.com/{controller}/{action}</pre></code>
 
@@ -273,7 +323,7 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
                 <pre><code class="language-http">http://example.com/user/login</pre></code>
 
                 <p>
-                    The following url results in SimpleMVC invoking UserController.php and triggering ->loginAction() method of that controller, you can see source of such controller below:
+                    The following url results in Simpletools\MVC invoking UserController.php and triggering ->loginAction() method of that controller, you can see source of such controller below:
                 </p>
 
                 <pre class="line-numbers"><code class="language-php">&lt;?php
@@ -287,24 +337,24 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
 ?&gt;</code></pre>
 
             <p>
-                After executing loginAction() by default SimpleMVC moves to rendering view located inside Views/User/login.phtml and completing the routing cycle.
+                After executing loginAction() by default Simpletools\MVC moves to rendering view located inside Views/User/login.phtml and completing the routing cycle.
             </p>
 
             <p>
-               In case of empty values for controller or actions inside the requested url path (<a href="#routing-naming-convention">more about routing naming convention</a>) SimpleMVC defaults all to index so for controller it results with IndexController, and for action indexAction().
+               In case of empty values for controller or actions inside the requested url path (<a href="#routing-naming-convention">more about routing naming convention</a>) Simpletools\MVC defaults all to index so for controller it results with IndexController, and for action indexAction().
             </p>
             </div>
 
             <div id="routing-naming-convention" class="subgroup">
                 <h3>Naming convention</h3>
                 <p>
-                    To prevent any confusion regarding how to name controller, action or view's SimpleMVC is normalising all before triggering each component. The rules how it works for each component have been listed below.
+                    To prevent any confusion regarding how to name controller, action or view's Simpletools\MVC is normalising all before triggering each component. The rules how it works for each component have been listed below.
                 </p>
                 <ul>
                     <li>
                         <b>Controllers</b>
                         <p>
-                            Before deciding which controller to use SimpleMVC is parsing the requested name as follow:
+                            Before deciding which controller to use Simpletools\MVC is parsing the requested name as follow:
                         </p>
                         <ol>
                             <li>lowering down all characters</li>
@@ -318,7 +368,7 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
                     <li>
                         <b>Actions</b>
                         <p>
-                            Before deciding which action to trigger SimpleMVC is parsing the requested name as follow:
+                            Before deciding which action to trigger Simpletools\MVC is parsing the requested name as follow:
                         </p>
                         <ol>
                             <li>lowering down all characters</li>
@@ -331,7 +381,7 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
                     <li>
                         <b>Views folder</b>
                         <p>
-                            To decide in which folder to find a requested view, SimpleMVC is parsing the requested name as follow
+                            To decide in which folder to find a requested view, Simpletools\MVC is parsing the requested name as follow
                         </p>
                         <ol>
                             <li>lowering down all characters</li>
@@ -344,7 +394,7 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
                     <li>
                         <b>Views</b>
                         <p>
-                            Before deciding which view to render SimpleMVC is parsing the requested name as follow:
+                            Before deciding which view to render Simpletools\MVC is parsing the requested name as follow:
                         </p>
                         <ol>
                             <li>lowering down all characters</li>
@@ -371,10 +421,7 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
          <section id="namespacing" class="group">
             <h2>Namespacing</h2>
             <p>
-                SimpleMVC provides an extra feature allowing you to organise your application into more compartmental way enabling you to build extra apps within an app e.g /api which can have its own models, controllers, actions and views.
-            </p>
-            <p>
-                This feature is powered by PHP namespacing hence minimum PHP >= 5.3.* is required.
+                Simpletools\MVC provides an extra feature allowing you to organise your application into more compartmental way enabling you to build apps within an app e.g /api/v1 which can have its own models, controllers, actions and views.
             </p>
             </section>
 
@@ -431,10 +478,32 @@ $myModel = SimpleModel::getInstance('Foo'); </code></pre>
                     </ul>
                 </li>
                  <li>
-                    <a href="https://github.com/getsimpletools/simpletools/blob/master/SimpleMVC.php" target="_blank">Download</a>
+                    <a href="https://github.com/getsimpletools/simpletools/blob/master/Simpletools\MVC.php" target="_blank">Download</a>
                 </li>
             </ul>
         </nav>
 
   </div>
 </div>
+</div></div>
+
+  <footer>
+  Code licensed under <a href="https://github.com/getsimpletools/simpletools/blob/master/LICENSE">BSD</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.<br />
+  Powered by <a href="http://jekyllrb.com/">Jekyll</a>, hosted on <a href="https://pages.github.com/">Github Pages</a>.
+</footer>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-17250275-12', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

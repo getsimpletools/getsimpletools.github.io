@@ -17,6 +17,7 @@ body{
 	#navbar,.navbar-default
     {
 		background:#fff;
+        margin-bottom: 0px;
 
         a{
           &.navbar-brand{
@@ -34,8 +35,13 @@ body{
 	}
 
 	#content{
-		padding:0 40px;
+
+		padding:0;
         padding-bottom:100px;
+
+        .content{
+            padding: 0 40px;
+        }
 	}
 
     h1,h2,h3,h4{
@@ -116,13 +122,57 @@ body{
     }
 }
 
+/* homepage */
+#home-banner{
+    padding: 1px 0 0 0 ;
+    height:400px;
+    width: 100%;
+    background: #4FC3F7;
 
+    .circle {
+        border-radius: 50%;
+        width: 200px;
+        height: 200px; 
+        background:#fff;
+        margin: 25px auto 0;
+        text-align: center;
+        line-height: 200px;
+        font-weight: 400;
+        font-size:1.6em;
+        color: #0277BD;
+    }
+
+    .circle2 {
+        border-radius: 50%;
+        width: 250px;
+        height: 250px; 
+        background:#B3E5FC;
+
+        padding:1px 0 0 0;
+        margin: 25px auto 0;
+        text-align: center;
+        line-height: 300px;
+
+    }
+
+    .circle3 {
+        border-radius: 50%;
+        width: 300px;
+        height: 300px; 
+        background:#81D4FA;
+        padding:1px 0 0 0;
+        margin: 50px auto 0;
+        text-align: center;
+        line-height: 300px;
+    }
+}
 
 /* sidebar */
 .bs-docs-sidebar {
     padding-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+
 
     &.affix
     {
