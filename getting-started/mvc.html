@@ -21,7 +21,7 @@ title: Getting started with Simpletools\Mvc
         </section>
         <section id="setup" class="group">
             <h2>Setup</h2>
-            <p>Simpletools\Mvc is very easy to setup, all you need is to include just Simpletools\Mvc.php into your project and organise your application files and folders in the normalised way. Below we have demonstrated all you need to get your first app up and running using Simpletools\Mvc.</p>
+            <p>Simpletools\Mvc is very easy to setup, all you need is a composer and organise your application files and folders in the normalised way (you can also download all framework directly). Below we have demonstrated all you need to get your first app up and running using Simpletools\Mvc.</p>
            
             <div id="directory" class="subgroup">
                 <h3>Directory structure</h3>
@@ -43,11 +43,14 @@ title: Getting started with Simpletools\Mvc
                 index.phtml
             Error/
                 error.phtml
-    libs/
-        Simpletools/
-            Mvc.php
     public/
-        bootstrap.php</code></pre>
+        bootstrap.php
+    vendor/
+        simpletools/
+            framework/
+                ...
+        autoload.php
+    composer.json</code></pre>
 
             </div>
 
@@ -55,13 +58,13 @@ title: Getting started with Simpletools\Mvc
                 <h3>Bootstrapping</h3>
                 <p>After creating the initial application structure as described above we can move on to create a body of our bootstrap.php script being responsible for booting up our application. The source of that file is very simple:</p>
                 <pre class="line-numbers"><code class="language-php">&lt;?php
-    require_once("../libs/Simpletools/Mvc.php"); 
+    require_once("../vendor/autoload.php"); 
 
-    $mvc = \Simpletools\Mvc::settings(array(
+    $router = \Simpletools\Mvc\Router::settings(array(
         "applicationDir" => "../application"
     ));
 
-    $mvc->run();
+    $router->dispatch();
 ?&gt;</code></pre>
             </div>
             <div id="index-handler" class="subgroup">
