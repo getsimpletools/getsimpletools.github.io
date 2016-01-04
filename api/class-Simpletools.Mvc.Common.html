@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class Simpletools\Mvc\Common</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-Simpletools.html">
+						Simpletools<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-Simpletools.Autoload.html">
+						Autoload					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Simpletools.Config.html">
+						Config					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Simpletools.Db.html">
+						Db<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-Simpletools.Db.Mysql.html">
+						Mysql					</a>
+
+						</li>
+							</ul></li>
+				<li>
+					<a href="namespace-Simpletools.Event.html">
+						Event					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Simpletools.Http.html">
+						Http					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-Simpletools.Mvc.html">
+						Mvc					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Simpletools.Page.html">
+						Page					</a>
+
+						</li>
+				<li>
+					<a href="namespace-Simpletools.Store.html">
+						Store					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-Simpletools.Mvc.Common.html">Common</a></li>
+				<li><a href="class-Simpletools.Mvc.Controller.html">Controller</a></li>
+				<li><a href="class-Simpletools.Mvc.Model.html">Model</a></li>
+				<li><a href="class-Simpletools.Mvc.Router.html">Router</a></li>
+				<li><a href="class-Simpletools.Mvc.RoutingHook.html">RoutingHook</a></li>
+				<li><a href="class-Simpletools.Mvc.View.html">View</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-Simpletools.Mvc.html" title="Summary of Simpletools\Mvc"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Common</h1>
+
+
+	<div class="description">
+	<p>MVC Common Methods</p>
+	</div>
+
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-Simpletools.Mvc.Controller.html">Simpletools\Mvc\Controller</a>, 
+			<a href="class-Simpletools.Mvc.Router.html">Simpletools\Mvc\Router</a>, 
+			<a href="class-Simpletools.Mvc.View.html">Simpletools\Mvc\View</a>
+	</div>
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-Simpletools.html">Simpletools</a>\<a href="namespace-Simpletools.Mvc.html">Mvc</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-Simpletools.Mvc.Common.html#40-461" title="Go to source code">Simpletools/Mvc/Common.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="getCorrectActionName" id="_getCorrectActionName">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCorrectActionName">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#45-59" title="Go to source code">getCorrectActionName</a>( <span>string <var>$action</var></span> )</code>
+
+		<div class="description short">
+			<p>Action name normaliser</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Action name normaliser</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$action</var></dt>
+					<dd>Action name to normalise</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Normalised action name
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCorrectControllerName" id="_getCorrectControllerName">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCorrectControllerName">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#61-75" title="Go to source code">getCorrectControllerName</a>( <span>string <var>$controller</var></span> )</code>
+
+		<div class="description short">
+			<p>Controller name normaliser</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Controller name normaliser</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$controller</var></dt>
+					<dd>Controller name to normalise</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Normalised controller name
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isPost" id="_isPost">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isPost">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#77-102" title="Go to source code">isPost</a>( <span>string <var>$id</var> = <span class="php-keyword1">false</span></span>, <span>integer <var>$filter</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$filterOptions</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>HTTP POST checker</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>HTTP POST checker</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd>POST key to check</dd>
+					<dt><var>$filter</var></dt>
+					<dd>Filter type - http://php.net/manual/en/filter.filters.sanitize.php</dd>
+					<dt><var>$filterOptions</var></dt>
+					<dd>Filter options</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed<br>boolean if no filter is set
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isQuery" id="_isQuery">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isQuery">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#104-129" title="Go to source code">isQuery</a>( <span>string <var>$id</var> = <span class="php-keyword1">false</span></span>, <span>integer <var>$filter</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$filterOptions</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>HTTP GET checker</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>HTTP GET checker</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd>GET key to check</dd>
+					<dt><var>$filter</var></dt>
+					<dd>Filter type - http://php.net/manual/en/filter.filters.sanitize.php</dd>
+					<dt><var>$filterOptions</var></dt>
+					<dd>Filter options</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed<br>boolean if no filter is set
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isRequest" id="_isRequest">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isRequest">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#131-156" title="Go to source code">isRequest</a>( <span>string <var>$id</var> = <span class="php-keyword1">false</span></span>, <span>integer <var>$filter</var> = <span class="php-keyword1">null</span></span>, <span>array <var>$filterOptions</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+		<div class="description short">
+			<p>HTTP REQUEST checker</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>HTTP REQUEST checker</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd>REQUEST key to check</dd>
+					<dt><var>$filter</var></dt>
+					<dd>Filter type - http://php.net/manual/en/filter.filters.sanitize.php</dd>
+					<dt><var>$filterOptions</var></dt>
+					<dd>Filter options</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed<br>boolean if no filter is set
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getQuery" id="_getQuery">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getQuery">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#158-191" title="Go to source code">getQuery</a>( <span>string <var>$id</var> = <span class="php-keyword1">null</span></span>, <span>integer <var>$sanitizeFilter</var> = FILTER_SANITIZE_STRING</span>, <span>array <var>$sanitizeFilterOptions</var> = <span class="php-keyword1">array</span>(<span class="php-quote">'flags'</span>=&gt;FILTER_FLAG_STRIP_HIGH)</span> )</code>
+
+		<div class="description short">
+			<p>HTTP GET getter</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>HTTP GET getter</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd>GET key to return</dd>
+					<dt><var>$sanitizeFilter</var></dt>
+					<dd>Sanitize Filter type - http://php.net/manual/en/filter.filters.sanitize.php, defaults to FILTER_SANITIZE_STRING</dd>
+					<dt><var>$sanitizeFilterOptions</var></dt>
+					<dd>Sanitize Filter options</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed<br>GET value or values if $id is not provided
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPost" id="_getPost">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPost">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#193-226" title="Go to source code">getPost</a>( <span>string <var>$id</var> = <span class="php-keyword1">null</span></span>, <span>integer <var>$sanitizeFilter</var> = FILTER_SANITIZE_STRING</span>, <span>array <var>$sanitizeFilterOptions</var> = <span class="php-keyword1">array</span>(<span class="php-quote">'flags'</span>=&gt;FILTER_FLAG_STRIP_HIGH)</span> )</code>
+
+		<div class="description short">
+			<p>HTTP POST getter</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>HTTP POST getter</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd>POST key to return</dd>
+					<dt><var>$sanitizeFilter</var></dt>
+					<dd>Sanitize Filter type - http://php.net/manual/en/filter.filters.sanitize.php, defaults to FILTER_SANITIZE_STRING</dd>
+					<dt><var>$sanitizeFilterOptions</var></dt>
+					<dd>Sanitize Filter options</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed<br>POST value or values if $id is not provided
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getRequest" id="_getRequest">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getRequest">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#228-261" title="Go to source code">getRequest</a>( <span>string <var>$id</var> = <span class="php-keyword1">null</span></span>, <span>integer <var>$sanitizeFilter</var> = FILTER_SANITIZE_STRING</span>, <span>array <var>$sanitizeFilterOptions</var> = <span class="php-keyword1">array</span>(<span class="php-quote">'flags'</span>=&gt;FILTER_FLAG_STRIP_HIGH)</span> )</code>
+
+		<div class="description short">
+			<p>HTTP REQUEST getter</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>HTTP REQUEST getter</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$id</var></dt>
+					<dd>REQUEST key to return</dd>
+					<dt><var>$sanitizeFilter</var></dt>
+					<dd>Sanitize Filter type - http://php.net/manual/en/filter.filters.sanitize.php, defaults to FILTER_SANITIZE_STRING</dd>
+					<dt><var>$sanitizeFilterOptions</var></dt>
+					<dd>Sanitize Filter options</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed<br>REQUEST value or values if $id is not provided
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="returnParams" id="_returnParams">
+
+		<td class="attributes"><code>
+			 public 
+
+			array
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_returnParams">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#263-272" title="Go to source code">returnParams</a>( <span>string <var>$type</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns all params by type</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns all params by type</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$type</var></dt>
+					<dd>Type of the params to return, accepted values - associative or number</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					array<br>Returns all params a per specified type
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setParams" id="_setParams">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setParams">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#274-278" title="Go to source code">setParams</a>( <span> <var>&amp; $params</var></span>, <span> <var>&amp; $shifted_params</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isParam" id="_isParam">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isParam">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#280-290" title="Go to source code">isParam</a>( <span>string <var>$key</var></span> )</code>
+
+		<div class="description short">
+			<p>Is URL Param by key name</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Is URL Param by key name</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>Name of the requested param</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>Returns true or false
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParam" id="_getParam">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParam">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#292-304" title="Go to source code">getParam</a>( <span>string <var>$key</var> = <span class="php-quote">''</span></span> )</code>
+
+		<div class="description short">
+			<p>Get URL Param by key name</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get URL Param by key name</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>Name of the requested param</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed<br>Returns requested param value or all params if key is not specified or null if key doesn't exist
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParam_" id="_getParam_" class="deprecated">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParam_">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#306-317" title="Go to source code">getParam_</a>( <span>integer <var>$index</var></span> )</code>
+
+		<div class="description short">
+			<p>Get URL Param by index</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get URL Param by index</p>
+
+				<h4>Deprecated</h4>
+				<div class="list">
+						2.0.15 Use getParamByIndex() instead<br>
+				</div>
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$index</var></dt>
+					<dd>Position of the param starting from 0</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Returns requested param value
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getParamByIndex" id="_getParamByIndex">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getParamByIndex">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#319-329" title="Go to source code">getParamByIndex</a>( <span>integer <var>$index</var></span> )</code>
+
+		<div class="description short">
+			<p>Get URL Param by index</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get URL Param by index</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$index</var></dt>
+					<dd>Position of the param starting from 0</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>Returns requested param value
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isParam_" id="_isParam_" class="deprecated">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isParam_">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#331-342" title="Go to source code">isParam_</a>( <span>integer <var>$index</var></span> )</code>
+
+		<div class="description short">
+			<p>Is Param by index</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Is Param by index</p>
+
+				<h4>Deprecated</h4>
+				<div class="list">
+						2.0.15 Use isParamByIndex() instead<br>
+				</div>
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$index</var></dt>
+					<dd>Position of the param starting from 0</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>Returns true or false
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isParamByIndex" id="_isParamByIndex">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isParamByIndex">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#344-354" title="Go to source code">isParamByIndex</a>( <span>integer <var>$index</var></span> )</code>
+
+		<div class="description short">
+			<p>Is Param by index</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Is Param by index</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$index</var></dt>
+					<dd>Position of the param starting from 0</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>Returns true or false
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="location" id="_location">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_location">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#356-359" title="Go to source code">location</a>( <span> <var>$location</var></span>, <span> <var>$type</var> = <span class="php-num">302</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="redirect" id="_redirect">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_redirect">#</a>
+		<code><a href="source-class-Simpletools.Mvc.Common.html#361-460" title="Go to source code">redirect</a>( <span> <var>$params</var></span>, <span> <var>$addslash</var> = <span class="php-keyword1">false</span></span>, <span> <var>$protocol</var> = <span class="php-keyword1">false</span></span>, <span> <var>$type</var> = <span class="php-num">301</span></span>, <span> <var>$HTTP_GET</var> = <span class="php-quote">''</span></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
