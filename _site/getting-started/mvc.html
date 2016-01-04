@@ -37,15 +37,15 @@
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Getting started <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/getting-started/mvc.html">\Mvc</a></li>
+              <li><a href="/getting-started/mvc.html">Mvc</a></li>
+
+              
             </ul>
           </li>
-          <li class="dropdown">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">API Reference <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="/api-reference/mvc.html">\Mvc</a></li>
-            </ul>
+          <li>
+            <a href="/api/index.html" role="button" aria-expanded="false">API Reference</a>
           </li>
+          
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -70,7 +70,23 @@
         </section>
         <section id="setup" class="group">
             <h2>Setup</h2>
-            <p>Simpletools\Mvc is very easy to setup, all you need is a composer and organise your application files and folders in the normalised way (you can also download all framework directly). Below we have demonstrated all you need to get your first app up and running using Simpletools\Mvc.</p>
+            <p>Simpletools\Mvc is very easy to setup, all you need is a composer and organise your application files and folders in the normalised way (you can also download all framework directly). Below we have demonstrated all you need to get your first app up and running using Simpletools\Mvc.
+            </p>
+
+            <p>
+                And to simplify the setup you can just run:
+            </p>
+            <pre><code class="language-bash">composer create-project simpletools/helloworld --prefer-dist</code></pre>
+            <p>
+                Helloworld example can be run stratight away with PHP Built-in web server server as it include a file which emulates mod_rewrite. To start just run:
+            </p>
+            <pre><code class="language-bash">php -S localhost:8000 server.php</code></pre>
+            <p>
+                This will start web server listening on port 8000 and localhost domain.
+            </p>
+            <p>
+                *Keep in mind that PHP web server was designed to aid application development. It may also be useful for testing purposes or for application demonstrations that are run in controlled environments. It is not intended to be a full-featured web server. It should not be used on a public network.
+            </p>
            
             <div id="directory" class="subgroup">
                 <h3>Directory structure</h3>
@@ -290,7 +306,7 @@
                 <p>Models can be accessed inside the controller"s actions by using the following command:</p>
 
                 <pre class="line-numbers"><code class="language-php">//just a model name - Foo, no need for affix - Model/FooModel - here
-$myModel = \Simpletools\Mvc\Model::getInstance("Foo"); </code></pre>
+$fooModel = \Simpletools\Mvc\Model::of("Foo"); </code></pre>
 
                 <p>Models can have any methods you wish as well as they can be extended by any other classes.</p>
 
@@ -415,6 +431,27 @@ $myModel = \Simpletools\Mvc\Model::getInstance("Foo"); </code></pre>
                 <p>
                     Requests resulting in missing controller, action or view are being automatically re-routed to the ErrorController.php and triggers errorAction resulting in rendering error.phtml view alongside with 404 HTTP code being returned hence their importance during the initial directory setup structure <a href="#errors-handler">described above</a>.
                 </p>
+            </div>
+
+            <div id="custom-routing" class="subgroup">
+                <h3>Custom routing</h3>
+                <p>
+                    Simpletools/Mvc also supports advanced routing allowing you to specify your own routing maps. Custom routing takes precedence over standard routing and is optional in a sense that if no custom route is found, standard routing will be used instead.
+                </p>
+
+                <pre class="line-numbers" data-line="4-11"><code class="language-php">&lt;?php
+    $router = \Simpletools\Mvc\Router::settings(array(
+        "applicationDir"    => "../application",
+        "customRoutes"      => [
+            "GET"   => [
+                "/user/{userName}/settings/{id}"    => "GetController@action",
+            ],
+            "ANY"   => [
+                "/user/{userName}/settings/{id}"    => "AnyController@action",
+            ]
+        ]
+    ));
+?&gt;</code></pre>
             </div>
     
 </section>
@@ -541,7 +578,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance("Foo"); </code></pre>
                 <h3>Models</h3>
                 <p>With namespaces models are getting extra organisation layer in form of its dedicate folders under models directory and as well as controllers can forward requests to any other places same with models, controllers can access any moder they wish including those outside of their currently active namespace. E.g. to access api/v1 models from api/v2 located controller:</p>
 
-                <pre><code class="language-php">\Simpletools\Mvc\Model::getInstance("/api/v1/..");</code></pre>
+                <pre><code class="language-php">\Simpletools\Mvc\Model::of("/api/v1/..");</code></pre>
 
                 <p>for the convenience both characters <b>\</b> and <b>/</b> are accepted as namespace separators.</p>
             </div>
@@ -596,6 +633,7 @@ $myModel = \Simpletools\Mvc\Model::getInstance("Foo"); </code></pre>
                         <li><a href="#principles">Routing principles</a></li>
                         <li><a href="#routing-naming-convention">Naming convention</a></li>
                         <li><a href="#errors-handling">Errors handling</a></li>
+                        <li><a href="#custom-routing">Custom routing</a></li>
                     </ul>
                 </li>
                 <li>

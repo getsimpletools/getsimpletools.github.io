@@ -1,0 +1,4 @@
+source:
+    - ../simpletools_git/src
+
+destination: _site/api
