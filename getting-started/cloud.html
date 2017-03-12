@@ -147,6 +147,25 @@ $file->save();
 </code></pre>
                 </div>
 
+                <div id="cloud-file-read-json" class="subgroup">
+                    <h3>Read JSON from a File</h3>
+                    <p>To return body as JSON object</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.json");
+var_dump($file->getJson());
+</code></pre>
+
+                </div>
+
+                <div id="cloud-file-write-json" class="subgroup">
+                    <h3>Write JSON to a File</h3>
+                    <p>To write object or an array as JSON into file</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.json");
+$file->setJson([
+    "key"   => "value"
+])->save();
+</code></pre>
+                </div>
+
                 <div id="cloud-file-baseproto" class="subgroup">
                     <h3>Setting up base path protocol</h3>
                     <p>To simplify file initialisation and possible refactoring or storage platform migration in future, default protocol can be set instead of specifying one each time</p>
@@ -168,27 +187,6 @@ $file->save();
                     <p>To enable debugging or development environment and to prevent production files overwrite you can set bucket suffix option, basically once set, each path provided during the file initialisation will get bucket name appended with provided string.</p>
                     <p>To set it up see example below:</p>
                     <pre class="line-php"><code class="language-php">\Simpletools\Cloud\File::setBucketSuffix('-dev');</code></pre>
-                </div>
-
-
-                <div id="cloud-file-read-json" class="subgroup">
-                    <h3>Read JSON from a File</h3>
-                    <p>To return body as JSON object</p>
-                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.json");
-var_dump($file->getJson());
-</code></pre>
-
-                </div>
-
-                <div id="cloud-file-write-json" class="subgroup">
-                    <h3>Write JSON to a File</h3>
-                    <p>To write object or an array as JSON into file</p>
-                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.json");
-$file->setJson([
-    "key"   => "value"
-])->save();
-</code></pre>
-
                 </div>
 
             </section>
