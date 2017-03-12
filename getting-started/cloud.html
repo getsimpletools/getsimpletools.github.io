@@ -1,0 +1,313 @@
+---
+title: Getting started with Simpletools\Cloud
+---
+
+<div class="content">
+    <h1>Getting started with Simpletools\Cloud</h1>
+
+
+    <div class="row">
+        <div class="col-sm-9">
+            <section id="introduction" class="group">
+                <p class="subhead">Simpletools\Cloud has been designed to provide you with simple and easy to use Cloud Platforms access layer.</p>
+
+                <div id="requirements" class="subgroup">
+                    <h3>Requirements</h3>
+                    <p>
+                        Simpletools framework requires PHP version >= 5.3.0
+                    </p>
+                </div>
+            </section>
+
+            <section id="setup" class="group">
+                <h2>Setup</h2>
+                <p>Simpletools\Page\Layout can be used as a standalone class however for purpose of that document we assume that you are using Simpletools\Mvc alongside hence will provide examples based on that.
+                </p>
+
+                <div id="installation" class="subgroup">
+                    <h3>Installation</h3>
+                    <p>
+                        To see how to install \Simpletools framework please <a href="/getting-started/mvc.html#setup">click here</a>.
+                    </p>
+                    <p>
+                        To use \Simpletools\Cloud you also need to install each platform's client e.g. Google Cloud Platform:
+
+                        <pre class="line-numbers"><code class="language-bash">composer require google/cloud</code></pre>
+
+                    </p>
+                </div>
+
+                    <div id="configuration" class="subgroup">
+                        <h3>Configuration</h3>
+                        <p>
+                            To enable Simpletools\Cloud you just need to pass access keys as per each platform's client requirements e.g. for Google Cloud Platform:
+                        </p>
+
+                        <pre class="line-numbers"><code class="language-php">Simpletools\Cloud\Google\Client::settings($settings);</code></pre>
+                    </div>
+
+            </section>
+
+            <section id="cloud-file" class="group">
+                <h2>\Simpletools\Cloud\File</h2>
+                <p>
+                    Simpletools\Cloud\File is an easy to use component allowing you to easily interact with files stored under a chosen cloud platform storage.
+                </p>
+
+                <div id="cloud-file-init" class="subgroup">
+                    <h3>Initialise File Object</h3>
+                    <p>
+                        To initialise your cloud file for read or writes you just need to provide an appropriate path to it as a first construct method argument and optionally to set extra meta info you can provide 2nd argument as an array.
+                    </p>
+                    <p>
+                        The path argument should correspond to the following URI pattern:
+                    </p>
+
+                    <pre class="line-php"><code class="language-bash">{protocol}://{bucket}/{fileKey}</code></pre>
+
+                    <p>
+                        For example, to initialize Google Cloud Storage based file:
+                    </p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.txt");</code></pre>
+
+                </div>
+
+                <div id="cloud-file-read" class="subgroup">
+                    <h3>Read from a File</h3>
+                    <p>To return content of the file as a string</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.txt");
+print $file->getBody();
+</code></pre>
+
+                    <p>To return a file pointer with read flag to the file</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.txt");
+$handle = $file->getHandler('r');
+while (!feof($handle)) {
+    print fread($handle, 8192);
+}
+</code></pre>
+
+                </div>
+
+                <div id="cloud-file-write" class="subgroup">
+                    <h3>Write to a File</h3>
+                    <p>To write a string to a file</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.txt");
+$file->setBody("My text")
+     ->save();
+</code></pre>
+
+                    <p>To return a file pointer with write flag to the file</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.txt");
+$handle = $file->getHandler('w');
+fwrite($handle,"My text");
+$file->save();
+</code></pre>
+
+                </div>
+
+                <div id="cloud-file-append" class="subgroup">
+                    <h3>Append to a File</h3>
+                    <p class="well well-sm">
+                        Please note that appending to large files might be time consuming as time is needed to download them first into a local filesystem.
+                    </p>
+                    <p>To append a string to a file</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.txt");
+$file->appendBody("My appended text")
+     ->save();
+</code></pre>
+
+                    <p>To return a file pointer with append flag to the file</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.txt");
+$handle = $file->getHandler('a');
+fwrite($handle,"My appended text");
+$file->save();
+</code></pre>
+
+                </div>
+
+                <div id="cloud-file-save" class="subgroup">
+                    <h3>Saving File Changes</h3>
+                    <p>In order to commit your changes to Cloud Platform Storage the following method needs to be invoked</p>
+                    <pre class="line-php"><code class="language-php">$file->save();
+</code></pre>
+                </div>
+
+                <div id="cloud-file-delete" class="subgroup">
+                    <h3>Delete a File</h3>
+                    <p>In order to delete a file from Cloud Platform Storage the following method needs to be invoked</p>
+                    <pre class="line-php"><code class="language-php">$file->delete();
+</code></pre>
+                </div>
+
+                <div id="cloud-file-rename" class="subgroup">
+                    <h3>Rename a File</h3>
+                    <p>In order to rename a file under Cloud Platform Storage the following method needs to be invoked</p>
+                    <pre class="line-php"><code class="language-php">$file->renameTo('gs://my-bucket/path/to/my/my-new-file.txt');
+</code></pre>
+                </div>
+
+                <div id="cloud-file-baseproto" class="subgroup">
+                    <h3>Setting up base path protocol</h3>
+                    <p>To simplify file initialisation and possible refactoring or storage platform migration in future, default protocol can be set instead of specifying one each time</p>
+                    <pre class="line-php"><code class="language-php">\Simpletools\Cloud\File::setBaseProtocol('gs');</code></pre>
+                    <p>After that line files can be initialised without the protocol in the path e.g.</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("//my-bucket/path/to/my/file.txt");</code></pre>
+                    <p>*if protocol is presented in the path it will be prioritised over the base one</p>
+                </div>
+
+                <div id="cloud-file-bucket-prefix" class="subgroup">
+                    <h3>Setting up Bucket Prefix</h3>
+                    <p>To enable debugging or development environment and to prevent production files overwrite you can set bucket prefix option, basically once set, each path provided during the file initialisation will get bucket name prepended with provided string.</p>
+                    <p>To set it up see example below:</p>
+                    <pre class="line-php"><code class="language-php">\Simpletools\Cloud\File::setBucketPrefix('dev-');</code></pre>
+                </div>
+
+                <div id="cloud-file-bucket-suffix" class="subgroup">
+                    <h3>Setting up Bucket Suffix</h3>
+                    <p>To enable debugging or development environment and to prevent production files overwrite you can set bucket suffix option, basically once set, each path provided during the file initialisation will get bucket name appended with provided string.</p>
+                    <p>To set it up see example below:</p>
+                    <pre class="line-php"><code class="language-php">\Simpletools\Cloud\File::setBucketSuffix('-dev');</code></pre>
+                </div>
+
+
+                <div id="cloud-file-read-json" class="subgroup">
+                    <h3>Read JSON from a File</h3>
+                    <p>To return body as JSON object</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.json");
+var_dump($file->getJson());
+</code></pre>
+
+                </div>
+
+                <div id="cloud-file-write-json" class="subgroup">
+                    <h3>Write JSON to a File</h3>
+                    <p>To write object or an array as JSON into file</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\File("gs://my-bucket/path/to/my/file.json");
+$file->setJson([
+    "key"   => "value"
+])->save();
+</code></pre>
+
+                </div>
+
+            </section>
+
+
+            <section id="cloud-bucket" class="group">
+                <h2>\Simpletools\Cloud\Bucket</h2>
+                <p>
+                    Simpletools\Cloud\Bucket is an easy to use component allowing you to easily search for files stored under your buckets and return them as a list of \Simpletools\Cloud\File objects.
+                </p>
+
+                <div id="cloud-bucket-init" class="subgroup">
+                    <h3>Initialise Bucket Object</h3>
+                    <p>
+                        To initialise your cloud bucket you just need to provide an appropriate path to it as a first construct method argument.
+                    </p>
+                    <p>
+                        The path argument should correspond to the following URI pattern:
+                    </p>
+
+                    <pre class="line-php"><code class="language-bash">{protocol}://{bucket}/</code></pre>
+
+                    <p>
+                        For example, to initialize Google Cloud Storage based bucket:
+                    </p>
+                    <pre class="line-php"><code class="language-php">$bucket = new \Simpletools\Cloud\Bucket("gs://my-bucket/");</code></pre>
+
+                </div>
+
+                <div id="cloud-bucket-search" class="subgroup">
+                    <h3>Search Files</h3>
+                    <p>To return list of cloud files matching prefix</p>
+                    <pre class="line-php"><code class="language-php">$bucket = new \Simpletools\Cloud\Bucket("gs://my-bucket/");
+$files  = $bucket->search([
+    'prefix'    => 'path/to'
+]);
+
+foreach($files as $file){
+    print $file->getBody();
+}
+</code></pre>
+
+                </div>
+
+                <div id="cloud-bucket-baseproto" class="subgroup">
+                    <h3>Setting up base path protocol</h3>
+                    <p>To simplify bucket initialisation and possible refactoring or storage platform migration in future, default protocol can be set instead of specifying one each time</p>
+                    <pre class="line-php"><code class="language-php">\Simpletools\Cloud\Bucket::setBaseProtocol('gs');</code></pre>
+                    <p>After that line buckets can be initialised without the protocol in the path e.g.</p>
+                    <pre class="line-php"><code class="language-php">$file = new \Simpletools\Cloud\Bucket("//my-bucket/");</code></pre>
+                    <p>*if protocol is presented in the path it will be prioritised over the base one</p>
+                </div>
+
+                <div id="cloud-bucket-bucket-prefix" class="subgroup">
+                    <h3>Setting up Bucket Prefix</h3>
+                    <p>To enable debugging or development environment and to prevent production bucket overwrite you can set bucket prefix option, basically once set, each path provided during the bucket initialisation will get bucket name prepended with provided string.</p>
+                    <p>To set it up see example below:</p>
+                    <pre class="line-php"><code class="language-php">\Simpletools\Cloud\Bucket::setBucketPrefix('dev-');</code></pre>
+                </div>
+
+                <div id="cloud-bucket-bucket-suffix" class="subgroup">
+                    <h3>Setting up Bucket Suffix</h3>
+                    <p>To enable debugging or development environment and to prevent production bucket overwrite you can set bucket suffix option, basically once set, each path provided during the bucket initialisation will get bucket name appended with provided string.</p>
+                    <p>To set it up see example below:</p>
+                    <pre class="line-php"><code class="language-php">\Simpletools\Cloud\Bucket::setBucketSuffix('-dev');</code></pre>
+                </div>
+
+            </section>
+        </div>
+
+
+
+        <div class="col-sm-3">
+            <!--Nav Bar -->
+            <nav class="bs-docs-sidebar" data-spy="affix" data-offset-top="160">
+                <ul id="sidebar" class="nav nav-stacked">
+                    <li>
+                        <a target="_self" href="#introduction">Introduction</a>
+                        <ul class="nav nav-stacked">
+                            <li><a target="_self" href="#requirements">Requirements</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#setup" target="_self">Setup</a>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#installation">Installation</a></li>
+                            <li><a href="#configuration">Configuration</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#cloud-file" target="_self">\File</a>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#cloud-file-init">Initialise</a></li>
+                            <li><a href="#cloud-file-read">Read</a></li>
+                            <li><a href="#cloud-file-write">Write</a></li>
+                            <li><a href="#cloud-file-append">Append</a></li>
+                            <li><a href="#cloud-file-save">Save</a></li>
+                            <li><a href="#cloud-file-delete">Delete</a></li>
+                            <li><a href="#cloud-file-rename">Rename</a></li>
+                            <li><a href="#cloud-file-read-json">Read JSON</a></li>
+                            <li><a href="#cloud-file-write-json">Write JSON</a></li>
+                            <li><a href="#cloud-file-baseproto">Set Base Protocol</a></li>
+                            <li><a href="#cloud-file-bucket-prefix">Set Bucket Prefix</a></li>
+                            <li><a href="#cloud-file-bucket-suffix">Set Bucket Suffix</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#cloud-bucket" target="_self">\Bucket</a>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#cloud-bucket-init">Initialise</a></li>
+                            <li><a href="#cloud-bucket-search">Search for Files</a></li>
+                            <li><a href="#cloud-bucket-baseproto">Set Base Protocol</a></li>
+                            <li><a href="#cloud-bucket-bucket-prefix">Set Bucket Prefix</a></li>
+                            <li><a href="#cloud-bucket-bucket-suffix">Set Bucket Suffix</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>

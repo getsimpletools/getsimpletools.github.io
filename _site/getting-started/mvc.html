@@ -37,8 +37,9 @@
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Getting started <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/getting-started/mvc.html">Mvc</a></li>
-
+              <li><a href="/getting-started/mvc.html">MVC</a></li>
+              <li class="divider"></li>
+              <li><a href="/getting-started/cloud.html">Cloud</a></li>
               
             </ul>
           </li>
@@ -530,6 +531,8 @@ $fooModel = \Simpletools\Mvc\Model::of("Foo"); </code></pre>
                         Create Foo controller with barAction:
 
                         <pre class="line-numbers"><code class="language-php">&lt;?php
+    namespace Api/V1;
+    
     class FooController extends \Simpletools\Mvc\Controller
     {
         public function barAction()
@@ -647,14 +650,15 @@ $fooModel = \Simpletools\Mvc\Model::of("Foo"); </code></pre>
                     </ul>
                 </li>
                  <li>
-                    <a href="https://github.com/getsimpletools/simpletools/blob/master/Simpletools\Mvc.php" target="_blank">Download</a>
+                    <a href="https://packagist.org/packages/simpletools/framework" target="_blank">Download</a>
                 </li>
             </ul>
         </nav>
 
   </div>
 </div>
-</div></div>
+</div>
+</div>
 
   <footer>
   Code licensed under <a href="https://github.com/getsimpletools/simpletools/blob/master/LICENSE">BSD</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.<br />
