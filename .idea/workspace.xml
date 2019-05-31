@@ -1,32 +1,323 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <option name="TRACKING_ENABLED" value="true" />
+    <list default="true" id="acd291d9-ef6a-44a0-9abe-d15ad8f4e515" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/getsimpletools.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/getsimpletools.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/getting-started/cloud.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/getting-started/cloud.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/getting-started/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/getting-started/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/getting-started/mvc.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/getting-started/mvc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/_grunt/node_modules/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_site/getting-started/cassandra.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="135" column="50" selection-start-line="135" selection-start-column="50" selection-end-line="135" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>$user-&gt;</find>
+      <find>id</find>
+      <find>'TABLE','KEYSPACE'</find>
+      <find>useage</find>
+      <find>update(</find>
+      <find>'COLUMN_1'</find>
+      <find>cert</find>
+      <find>key</find>
+      <find>Include</find>
+      <find>Listen 443</find>
+      <find>443</find>
+      <find>csr</find>
+      <find>Include</find>
+      <find>LoadModule socache_shmcb_module libexec/apache2/mod_socache_shmcb.so</find>
+      <find>INSERT</find>
+      <find>new Uuid</find>
+      <find>columns(</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="/etc/apache2/ssl/localhost.conf" />
+        <option value="/etc/apache2/httpd.conf" />
+        <option value="/usr/local/etc/httpd/httpd.conf" />
+        <option value="/usr/local/etc/httpd/vhosts/local-api-feedoptimise-io.conf" />
+        <option value="/usr/local/etc/httpd/vhosts/local-feedoptimise-io.conf" />
+        <option value="/usr/local/etc/httpd/vhosts/local-api-invoiceio-com.conf" />
+        <option value="/usr/local/etc/httpd/vhosts/local-getsimpletools-com.conf" />
+        <option value="/usr/local/etc/httpd/extra/httpd-ssl.conf" />
+        <option value="/private/etc/apache2/ssl/localhost.conf" />
+        <option value="$PROJECT_DIR$/_site/getting-started/cassandra.html" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1920" />
+    <option name="height" value="977" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="getsimpletools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="getsimpletools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="getsimpletools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="getsimpletools" type="462c0819:PsiDirectoryNode" />
+              <item name="_site" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="getsimpletools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="getsimpletools" type="462c0819:PsiDirectoryNode" />
+              <item name="_site" type="462c0819:PsiDirectoryNode" />
+              <item name="getting-started" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="acd291d9-ef6a-44a0-9abe-d15ad8f4e515" name="Default Changelist" comment="" />
       <created>1489318885258</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1489318885258</updated>
+      <workItem from="1559141531517" duration="3093000" />
+      <workItem from="1559205566435" duration="12634000" />
+      <workItem from="1559291704988" duration="4951000" />
     </task>
     <servers />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="20678000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1920" height="977" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2550586" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../simpletools/src/Simpletools/Autoload/Loader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-802" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../simpletools/src/Simpletools/Cloud/File.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_site/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../db-cassandra/src/Simpletools/Db/Cassandra/Query.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4233">
+          <caret line="249" column="26" selection-start-line="249" selection-start-column="20" selection-end-line="249" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../db-cassandra/src/Simpletools/Db/Cassandra/Client.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../simpletools/composer.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_site/getting-started/cloud.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6545">
+          <caret line="385" selection-start-line="72" selection-start-column="12" selection-end-line="385" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///private/etc/apache2/httpd.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3040">
+          <caret line="263" column="60" selection-start-line="263" selection-start-column="57" selection-end-line="263" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/etc/httpd/vhosts/server.key">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file:///private/etc/apache2/ssl/localhost.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="31" lean-forward="true" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/etc/httpd/extra/httpd-ssl.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/etc/httpd/vhosts/local-getsimpletools-com.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="26" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/etc/httpd/vhosts/local-api-invoiceio-com.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/etc/httpd/vhosts/local-feedoptimise-io.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/etc/httpd/vhosts/local-api-feedoptimise-io.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="32" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/etc/httpd/httpd.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="526" column="37" lean-forward="true" selection-start-line="526" selection-start-column="37" selection-end-line="526" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///etc/apache2/httpd.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="78" column="62" lean-forward="true" selection-start-line="78" selection-start-column="62" selection-end-line="78" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///etc/apache2/ssl/localhost.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_site/getting-started/cassandra.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="135" column="50" selection-start-line="135" selection-start-column="50" selection-end-line="135" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

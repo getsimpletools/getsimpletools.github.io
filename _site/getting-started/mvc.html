@@ -40,13 +40,14 @@
               <li><a href="/getting-started/mvc.html">MVC</a></li>
               <li class="divider"></li>
               <li><a href="/getting-started/cloud.html">Cloud</a></li>
-              
+							<li class="divider"></li>
+							<li><a href="/getting-started/cassandra.html">Cassandra</a></li>
             </ul>
           </li>
           <li>
             <a href="/api/index.html" role="button" aria-expanded="false">API Reference</a>
           </li>
-          
+
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -57,9 +58,9 @@
 
 <div class="row">
   <div class="col-sm-9">
-    
+
         <section id="introduction" class="group">
-           
+
             <p class="subhead">Simpletools\Mvc has been designed to provide you with all benefits of the Model-View-Controller software architectural pattern. Simpletools\Mvc provides scalability, performance and ease of use out of the box.</p>
 
             <div id="requirements" class="subgroup">
@@ -88,7 +89,7 @@
             <p>
                 *Keep in mind that PHP web server was designed to aid application development. It may also be useful for testing purposes or for application demonstrations that are run in controlled environments. It is not intended to be a full-featured web server. It should not be used on a public network.
             </p>
-           
+
             <div id="directory" class="subgroup">
                 <h3>Directory structure</h3>
                 <p>
@@ -124,7 +125,7 @@
                 <h3>Bootstrapping</h3>
                 <p>After creating the initial application structure as described above we can move on to create a body of our bootstrap.php script being responsible for booting up our application. The source of that file is very simple:</p>
                 <pre class="line-numbers"><code class="language-php">&lt;?php
-    require_once("../vendor/autoload.php"); 
+    require_once("../vendor/autoload.php");
 
     $router = \Simpletools\Mvc\Router::settings(array(
         "applicationDir" => "../application"
@@ -138,7 +139,7 @@
                 <p>
                     To handle any requests sent by a user to our application we need to set controllers with actions and views. Controllers, actions and views will be explained further under <a href="#components">Components</a> section so till then lets just create an IndexController, indexAction and index view allowing us to handle any requests to our index page using the examples below.
                 </p>
-                <p> 
+                <p>
                 <b>IndexController.php</b>:
                 </p>
 
@@ -152,7 +153,7 @@
     }
 ?&gt;</code></pre>
 
-<p> 
+<p>
                 <b>index.phtml</b>:
                 </p>
 
@@ -166,7 +167,7 @@
                 <p>
                     In addition to creating controllers, actions and views allowing our application to handle desired user requests it is highly recommended to handle requests which we have not intended to support in the first place, e.g. requests to not existing sections of our application. You can find more about <a href="#error-handling">Error handling</a> under <a href="#components">Components</a>. Error controller is a very simple class which Simpletools\Mvc uses in case of requests which can"t be routed anywhere else. An example of basic Error controller, action and view we are going to use in our application can be seen below.
                 </p>
-                <p> 
+                <p>
                 <b>ErrorController.php</b>:
                 </p>
 
@@ -180,7 +181,7 @@
     }
 ?&gt;</code></pre>
 
-<p> 
+<p>
                 <b>error.phtml</b>:
                 </p>
 
@@ -195,7 +196,7 @@
                     And finally, to run our application we just need to create web server configuration file routing all requests to our bootstrap.php file.
                 </p>
                 <p>
-                    For our getting started app we have chosen Apache for our web server and below you can see very basic virtual host definition file allowing our app (hosted under example.com) to run. These rules direct all requests to index.php, except when a matching file is found under the DocumentRoot. 
+                    For our getting started app we have chosen Apache for our web server and below you can see very basic virtual host definition file allowing our app (hosted under example.com) to run. These rules direct all requests to index.php, except when a matching file is found under the DocumentRoot.
                 </p>
 
                 <pre class="line-numbers"><code class="language-apacheconf">&ltVirtualHost example.com:80&gt
@@ -225,7 +226,7 @@
                     You can also type anything else e.g. http://example.com/foo to see error.phtml being rendered.
                 </p>
             </div>
-            
+
         </section>
 
 
@@ -291,7 +292,7 @@
                 <p>Models are responsible for the business logic. They can interact with databases, files etc.</p>
 
                 <p>
-                    To define a model you just need to create a simple class as below with the name of your choice followed by word Model and saved it under app/application/models folder inside the file with the same name as the class. 
+                    To define a model you just need to create a simple class as below with the name of your choice followed by word Model and saved it under app/application/models folder inside the file with the same name as the class.
                 </p>
                 <p>
                 In the example below we are using name <b>Foo</b> for our model hence after the addition of affix - Model - the file name would be FooModel.php
@@ -326,7 +327,7 @@ $fooModel = \Simpletools\Mvc\Model::of("Foo"); </code></pre>
             <p>
                 Routing is a process responsible for forwarding requests into the appropriate application controllers and their actions allowing to handle user requests as expected.
             </p>
-           
+
             <div id="principles" class="subgroup">
                 <h3>Routing principles</h3>
                  <p>
@@ -423,7 +424,7 @@ $fooModel = \Simpletools\Mvc\Model::of("Foo"); </code></pre>
                         </ol>
                     </li>
 
-                    
+
                 </ul>
             </div>
 
@@ -454,7 +455,7 @@ $fooModel = \Simpletools\Mvc\Model::of("Foo"); </code></pre>
     ));
 ?&gt;</code></pre>
             </div>
-    
+
 </section>
 
 
@@ -487,7 +488,7 @@ $fooModel = \Simpletools\Mvc\Model::of("Foo"); </code></pre>
                 <ol>
                     <li>modify our bootstrap slightly to register our /api/v1 namespace:
                 <pre class="line-numbers" data-line="6-8"><code class="language-php" >&lt;?php
-    require_once("../libs/Simpletools/Mvc.php"); 
+    require_once("../libs/Simpletools/Mvc.php");
 
     $mvc = \Simpletools\Mvc::settings(array(
         "applicationDir" => "../application",
@@ -532,7 +533,7 @@ $fooModel = \Simpletools\Mvc\Model::of("Foo"); </code></pre>
 
                         <pre class="line-numbers"><code class="language-php">&lt;?php
     namespace Api/V1;
-    
+
     class FooController extends \Simpletools\Mvc\Controller
     {
         public function barAction()
@@ -600,7 +601,7 @@ $fooModel = \Simpletools\Mvc\Model::of("Foo"); </code></pre>
 
 
   <div class="col-sm-3">
-  	
+
   	 <!--Nav Bar -->
         <nav class="bs-docs-sidebar" data-spy="affix" data-offset-top="160">
             <ul id="sidebar" class="nav nav-stacked">

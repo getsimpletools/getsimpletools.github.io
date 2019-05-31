@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Getting started with Simpletools\Cassandra</title>
+	<meta name="author" content="Marcin Rosinski">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/global.css" rel="stylesheet">
+
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+
+	<script src="/prism.js"></script>
+	<link href="/prism.css" rel="stylesheet">
+
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+<div id="wrapper">
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">\Simpletools</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="navbar">
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button"
+							 aria-expanded="false">Getting started <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/getting-started/mvc.html">MVC</a></li>
+							<li class="divider"></li>
+							<li><a href="/getting-started/cloud.html">Cloud</a></li>
+							<li class="divider"></li>
+							<li><a href="/getting-started/cassandra.html">Cassandra</a></li>
+
+						</ul>
+					</li>
+					<li>
+						<a href="/api/index.html" role="button" aria-expanded="false">API Reference</a>
+					</li>
+
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<div ng-view id="content">
+		<div class="content">
+			<h1>Getting started with Simpletools\Cassandra</h1>
+
+			<div class="row">
+				<div class="col-sm-9">
+
+					<section id="introduction" class="group">
+
+						<p class="subhead">Simpletools\Cassandra has been designed to provide you with all benefits of Apache
+							Cassandra, but with simplified and flexible PHP methods.</p>
+
+						<div id="requirements" class="subgroup">
+							<h3>Requirements</h3>
+							<p>
+								Simpletools\Cassandra requires PHP version >= 5.3.0
+							</p>
+							<p>
+								Simpletools\Cassandra requires Cassandra PHP Extension version >= 1.3.2
+							</p>
+						</div>
+					</section>
+
+					<section id="setup" class="group">
+						<h2>Setup</h2>
+						<p>Simpletools\Cassandra can be used as a standalone class and we have included a majority of examples with this approch in mind. However, if you are using Simpletools\Mvc alongside, our examples can be simplified. <a href="#query-for-model">Click here</a> to view the Simpletools\Cassandra snippets for usage inside a model.
+						</p>
+
+						<div id="installation" class="subgroup">
+							<h3>Installation</h3>
+							<p>
+								To see how to install \Simpletools framework please <a href="/getting-started/mvc.html#setup">click
+								here</a>.
+							</p>
+						</div>
+
+						<div id="configuration" class="subgroup">
+							<h3>Configuration</h3>
+							<p>
+								To enable Simpletools\Cassandra, you need to define your cluster settings:
+							<pre class="line-numbers"><code class="language-php">use Simpletools\Db\Cassandra\Client;
+
+Client::cluster([
+	'default'   =>  true,
+	'name'      => 'CLUSTER_NAME',
+	'hosts'     => ['127.0.0.1'],
+	'username'  => 'USERNAME',
+	'password'  => 'PASSWORD,
+	'port'      => 'PORT',
+	'keyspace'  => 'KEYSPACE'
+]);</code></pre>
+							</p>
+						</div>
+					</section>
+
+					<section id="query" class="group">
+						<h2>\Simpletools\Db\Cassandra\Query</h2>
+						<p>
+							Simpletools\Db\Cassandra\Query is an easy to use component allowing you to easily interact with your Cassandra database.
+						</p>
+
+						<div id="select" class="subgroup">
+							<h3>SELECT</h3>
+							<p>
+								To select you first need to create a new instance of \Simpletools\Db\Cassandra\Query:
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Query;
+
+$query = (new Query('TABLE'))
+	->client(new Client('CLIENT')) // optional - if this isn't set, it will use the default (set in the cluster config)
+	->keyspace('KEYSPACE') // optional - if this isn't set, it will use the default (set in the cluster config)</code></pre>
+
+							<p>
+								To retrieve only a set of columns, simply use the columns() method:
+							</p>
+							<pre class="line-php"><code class="language-php">$query->columns('COLUMN_1','COLUMN_2','COLUMN_3'); // example 1
+$query->columns([
+	'*',
+	'COLUMN_1'	=> 'json | json:object | json:array',
+	'COLUMN_2'	=> function($value){
+		return json_decode($value)
+	}
+]); // example 2</code></pre>
+
+							<p>
+								To include a <b>WHERE</b> statement to your query use (all columns in the WHERE statement MUST be included in the PRIMARY index):
+							</p>
+							<pre class="line-php"><code class="language-php">$query->where('COLUMN_1','VALUE_1');</code></pre>
+
+							<p>
+								You can then add an <b>AND</b> by using:
+							</p>
+							<pre class="line-php"><code class="language-php">$query->also('COLUMN_2', 'IN', ['VALUE_2','VALUE_3','VALUE_4']);</code></pre>
+
+							<p>
+								To include a <b>SORT BY</b> statement to your query use (all columns in the SORT BY statement MUST be included in the PRIMARY index):
+							</p>
+							<pre class="line-php"><code class="language-php">$query->sort('COLUMN_1','VALUE_1');</code></pre>
+
+							<p>
+								To include a <b>GROUP BY</b> statement to your query use (all columns in the GROUP BY statement MUST be included in the PRIMARY index):
+							</p>
+							<pre class="line-php"><code class="language-php">$query->group('COLUMN_1','VALUE_1');</code></pre>
+
+							<p>
+								To view the generated query while developing or to store in logs use:
+							</p>
+							<pre class="line-php"><code class="language-php">echo $query->getQuery();
+/* Output: SELECT COLUMN_1, COLUMN_2 FROM KEYSPACE.TABLE WHERE COLUMN_1 = VALUE_1 AND COLUMN_2 IN ('VALUE_2','VALUE_3','VALUE_4') */</code></pre>
+
+							<p>
+								Once you are ready, you can then run the query with the following methods:
+							</p>
+							<pre class="line-php"><code class="language-php">$query->fetch(); // fetch the first row
+$query->fetchAll(); // fetch all rows (array of objects)
+echo $query->length(); // returns the amount of results (int)</code></pre>
+
+							<p>
+								<b>PLEASE NOE:</b> The fetchAll() method is not needed if you loop on the $query variable. The plugin is smart enough to know that you would like to fetch all results at this point. An example of this is below.
+							</p>
+							<p>
+								A complete example of a <b>SELECT</b> query would look like (to catch insert errors, we suggest adding a try catch block around this example):
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Query;
+
+$query = (new Query('TABLE'))
+	->client(new Client('CLIENT')) // optional - if this isn't set, it will use the default (set in the cluster config)
+	->keyspace('KEYSPACE') // optional - if this isn't set, it will use the default (set in the cluster config)
+	->columns('COLUMN_1','COLUMN_2','COLUMN_3')
+	->where('COLUMN_1','VALUE_1')
+	->also('COLUMN_2','IN',['VALUE_2','VALUE_3','VALUE_4']);
+echo "Query: " . $query->getQuery();
+/* Output: SELECT COLUMN_1,COLUMN_2 FROM KEYSPACE.TABLE WHERE COLUMN_1 = VALUE_1 AND COLUMN_2 IN ('VALUE_2','VALUE_3','VALUE_4') */
+
+if ($query->length())
+	foreach ($query as $row)
+		echo json_encode($row) . "\n";
+/* Output: {"COLUMN_1":"VALUE_1","COLUMN_2":"VALUE_2"} */
+/* Output: {"COLUMN_1":"VALUE_1","COLUMN_2":"VALUE_3"} */
+/* Output: {"COLUMN_1":"VALUE_1","COLUMN_2":"VALUE_4"} */
+</code></pre>
+						</div>
+
+						<div id="insert" class="subgroup">
+							<h3>INSERT</h3>
+							<p>
+								To insert you first need to create a new instance of \Simpletools\Db\Cassandra\Query:
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Query;
+
+$query = (new Query('TABLE'))
+	->client(new Client('CLIENT')) // optional - if this isn't set, it will use the default (set in the cluster config)
+	->keyspace('KEYSPACE') // optional - if this isn't set, it will use the default (set in the cluster config)</code></pre>
+
+							<p>
+								Use the set() method to specify the data for the insert:
+							</p>
+							<pre class="line-php"><code class="language-php">$query->set([
+	'COLUMN_1'=>'VALUE_1',
+	'COLUMN_2'=>'VALUE_2',
+	'COLUMN_3'=>'VALUE_3'
+]);</code></pre>
+
+							<p>
+								If you only want to insert, if the row doesn't already exist, use insertIgnore() instead of set():
+							</p>
+							<pre class="line-php"><code class="language-php">$query->insertIgnore([
+	'COLUMN_1'=>'VALUE_1',
+	'COLUMN_2'=>'VALUE_2',
+	'COLUMN_3'=>'VALUE_3'
+]);</code></pre>
+
+							<p>
+								To use Cassandra's built in expiry feature, simply use expires():
+							</p>
+							<pre class="line-php"><code class="language-php">$query->expires(10); // specify expiry time in seconds</code></pre>
+
+							<p>
+								To view the generated query while developing or to store in logs use:
+							</p>
+							<pre class="line-php"><code class="language-php">echo $query->getQuery();
+/* Output: INSERT INTO KEYSPACE.TABLE (COLUMN_1,COLUMN_2,COLUMN_3) VALUES("VALUE_1","VALUE_2","VALUE_3") */</code></pre>
+
+							<p>
+								Once you are ready, you can then run the query with run():
+							</p>
+							<pre class="line-php"><code class="language-php">$query->run();</code></pre>
+
+							<p>
+								A complete example of a <b>INSERT</b> query would look like (to catch insert errors, we suggest adding a try catch block around this example):
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Query;
+
+$query = (new Query('TABLE'))
+	->client(new Client('CLIENT')) // optional - if this isn't set, it will use the default (set in the cluster config)
+	->keyspace('KEYSPACE') // optional - if this isn't set, it will use the default (set in the cluster config)
+	->set([
+		'COLUMN_1'=>'VALUE_1',
+		'COLUMN_2'=>'VALUE_2',
+		'COLUMN_3'=>'VALUE_3'
+	])
+	->run();
+</code></pre>
+						</div>
+
+						<div id="update" class="subgroup">
+							<h3>UPDATE</h3>
+							<p>
+								To update you first need to create a new instance of \Simpletools\Db\Cassandra\Query:
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Query;
+
+$query = (new Query('TABLE'))
+	->client(new Client('CLIENT')) // optional - if this isn't set, it will use the default (set in the cluster config)
+	->keyspace('KEYSPACE') // optional - if this isn't set, it will use the default (set in the cluster config)</code></pre>
+
+							<p>
+								Use the update() method to specify columns/data to update:
+							</p>
+							<pre class="line-php"><code class="language-php">$query->update([
+	'COLUMN_1'=>'VALUE_1',
+	'COLUMN_3'=>'VALUE_3'
+]);</code></pre>
+
+							<p>
+								To view the generated query while developing or to store in logs use:
+							</p>
+							<pre class="line-php"><code class="language-php">echo $query->getQuery();
+/* Output: INSERT INTO KEYSPACE.TABLE (COLUMN_1,COLUMN_2,COLUMN_3) VALUES("VALUE_1","VALUE_2","VALUE_3") */</code></pre>
+
+							<p>
+								Once you are ready, you can then run the query with run():
+							</p>
+							<pre class="line-php"><code class="language-php">$query->run();</code></pre>
+
+							<p>
+								A complete example of a <b>UPDATE</b> query would look like (to catch insert errors, we suggest adding a try catch block around this example):
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Query;
+
+$query = (new Query('TABLE'))
+	->client(new Client('CLIENT')) // optional - if this isn't set, it will use the default (set in the cluster config)
+	->keyspace('KEYSPACE') // optional - if this isn't set, it will use the default (set in the cluster config)
+	->update([
+		'COLUMN_1' => 'VALUE_1',
+		'COLUMN_3' => 'VALUE_3'
+	])
+	->run();
+</code></pre>
+						</div>
+
+						<div id="delete" class="subgroup">
+							<h3>DELETE</h3>
+
+							<p>
+								To update you first need to create a new instance of \Simpletools\Db\Cassandra\Query:
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Query;
+
+$query = (new Query('TABLE'))
+	->client(new Client('CLIENT')) // optional - if this isn't set, it will use the default (set in the cluster config)
+	->keyspace('KEYSPACE') // optional - if this isn't set, it will use the default (set in the cluster config)</code></pre>
+
+							<p>
+								Use the delete() method to specify columns/data to update:
+							</p>
+							<pre class="line-php"><code class="language-php">$query->delete('COLUMN_1', 'VALUE_1');</code></pre>
+
+							<p>
+								To view the generated query while developing or to store in logs use:
+							</p>
+							<pre class="line-php"><code class="language-php">echo $query->getQuery();
+/* Output: DELETE FROM KEYSPACE.TABLE WHERE COLUMN_1='VALUE_1' */</code></pre>
+
+							<p>
+								Once you are ready, you can then run the query with run():
+							</p>
+							<pre class="line-php"><code class="language-php">$query->run();</code></pre>
+
+							<p>
+								A complete example of a <b>DELETE</b> query would look like (to catch insert errors, we suggest adding a try catch block around this example):
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Query;
+
+$query = (new Query('TABLE'))
+	->client(new Client('CLIENT')) // optional - if this isn't set, it will use the default (set in the cluster config)
+	->keyspace('KEYSPACE') // optional - if this isn't set, it will use the default (set in the cluster config)
+	->delete('COLUMN_1', 'VALUE_1')
+	->run();
+</code></pre>
+						</div>
+					</section>
+
+					<section id="query-for-model" class="group">
+						<h2>\Simpletools\Db\Cassandra\Query for \Simpletools\Mvc</h2>
+						<p>
+							Great news! If you are using Simpletools\Mvc alongside Simpletools\Db\Cassandra, our \Query examples located above can be simplified for usage inside models.
+						</p>
+
+						<div class="subgroup">
+							<p>
+								If you are using \Query inside a \Mvc\Model, you simply need to extend your model class:
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Model;
+
+/*
+* OPTIONAL SETTINGS:
+* these can be changed on a model basis
+* if these arn't defined here, default cluster settings will be used
+*/
+const CLUSTER = "CLUSTER_NAME";
+const KEYSPACE = "KEYSPACE_NAME";
+
+class Example extends Model
+...</code></pre>
+						</div>
+						<div id="model-select" class="subgroup">
+							<h3>SELECT</h3>
+							<p>
+								An example <b>SELECT</b> statement would be ("TABLE_NAME" should be replaced with the name of the table that you want to query):
+							</p>
+							<pre class="line-php"><code class="language-php">$query = $this->TABLE_NAME('COLUMN_1','COLUMN_2','COLUMN_3')
+ ->where('COLUMN','VALUE');
+
+$result = $query->fetchAll();
+...
+</code></pre>
+						</div>
+
+						<div id="model-insert" class="subgroup">
+							<h3>INSERT</h3>
+							<p>
+								An example <b>INSERT</b> statement would be ("TABLE_NAME" should be replaced with the name of the table that you want to query):
+							</p>
+							<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
+	->set([
+			'COLUMN_1' => 'VALUE_1',
+			'COLUMN_2' => 'VALUE_2',
+			'COLUMN_3' => 'VALUE_3',
+	])
+	->run();
+</code></pre>
+						</div>
+
+						<div id="model-update" class="subgroup">
+						<h3>UPDATE</h3>
+						<p>
+							An example <b>UPDATE</b> statement would be ("TABLE_NAME" should be replaced with the name of the table that you want to query):
+						</p>
+						<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
+	->update([
+			'COLUMN_1' => 'VALUE_1',
+			'COLUMN_3' => 'VALUE_3'
+	])
+	->run();
+</code></pre>
+					</div>
+
+						<div id="model-delete" class="subgroup">
+							<h3>DELETE</h3>
+							<p>
+								An example <b>DELETE</b> statement would be ("TABLE_NAME" should be replaced with the name of the table that you want to query):
+							</p>
+							<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
+	->delete('COLUMN','VALUE')
+	->run();
+</code></pre>
+						</div>
+					</section>
+
+					<section id="uuid" class="group">
+						<h2>\Simpletools\Db\Cassandra\Uuid</h2>
+						<p>
+							Simpletools\Db\Cassandra\Uuid can be used to generate and prepare UUID's for use in queries.
+						</p>
+						<p>
+							<b>PLEASE NOTE:</b> query examples below, assume you are using \Simpletools\Mvc and the code is being used inside of a \Simpletools\Mvc\Model.
+						</p>
+
+						<div class="subgroup">
+							<p>
+								To generate a new UUID, you first need to create a new instance of \Simpletools\Db\Cassandra\Uuid:
+							</p>
+							<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Uuid;
+
+$uuid = new Uuid());
+echo $uuid;
+/* Output: 971aa1e4-8395-11e9-bc42-526af7764f64 */</code></pre>
+
+							<p>
+								The generated UUID can then be used in an <b>INSERT</b> query:
+							</p>
+							<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
+	->set([
+			'COLUMN_1' => $uuid,
+			'COLUMN_2' => 'VALUE_2',
+			'COLUMN_3' => 'VALUE_3',
+	])
+	->run();
+</code></pre>
+
+							<p>
+								For usage inside a <b>SELECT</b>/<b>UPDATE</b>/<b>DELETE</b> query's, UUID's need to be prepared, prior to passing them to the query builder (unless you are passing an already generated \Uuid class instance, like the example above: $uuid):
+							</p>
+							<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
+	->delete('COLUMN', new Uuid('UUID_STRING'))
+	->run();
+</code></pre>
+						</div>
+					</section>
+				</div>
+
+
+				<div class="col-sm-3">
+					<!--Nav Bar -->
+					<nav class="bs-docs-sidebar" data-spy="affix" data-offset-top="160">
+						<ul id="sidebar" class="nav nav-stacked">
+							<li>
+								<a target="_self" href="#introduction">Introduction</a>
+								<ul class="nav nav-stacked">
+									<li><a target="_self" href="#requirements">Requirements</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#setup" target="_self">Setup</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#installation">Installation</a></li>
+									<li><a href="#configuration">Configuration</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#query" target="_self">\Query</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#select">Select</a></li>
+									<li><a href="#insert">Insert</a></li>
+									<li><a href="#update">Update</a></li>
+									<li><a href="#delete">Delete</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#query-for-model" target="_self">\Query for \Mvc</a>
+								<ul class="nav nav-stacked">
+									<li><a href="#model-select">Select</a></li>
+									<li><a href="#model-insert">Insert</a></li>
+									<li><a href="#model-update">Update</a></li>
+									<li><a href="#model-delete">Delete</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#uuid" target="_self">\Uuid</a>
+							</li>
+						</ul>
+					</nav>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		Code licensed under <a href="https://github.com/getsimpletools/simpletools/blob/master/LICENSE">BSD</a>,
+		documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.<br/>
+		Powered by <a href="http://jekyllrb.com/">Jekyll</a>, hosted on <a href="https://pages.github.com/">Github Pages</a>.
+	</footer>
+</div>
+
+<script>
+	(function (i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+	ga('create', 'UA-17250275-12', 'auto');
+	ga('require', 'displayfeatures');
+	ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
