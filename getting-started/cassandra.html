@@ -372,20 +372,20 @@ $result = $query->fetchAll();
 					</div>
 				</section>
 
-				<section id="uuid" class="group">
-					<h2>\Simpletools\Db\Cassandra\Uuid</h2>
+				<section id="type" class="group">
+					<h2 id="uuid">\Simpletools\Db\Cassandra\Type\Uuid</h2>
 					<p>
-						Simpletools\Db\Cassandra\Uuid can be used to generate and prepare UUID's for use in queries.
+						Simpletools\Db\Cassandra\Type\Uuid can be used to generate and prepare UUID's for use in queries.
 					</p>
 					<p>
-						<b>PLEASE NOTE:</b> query examples below, assume you are using \Simpletools\Mvc and the code is being used inside of a \Simpletools\Mvc\Model.
+						<b>PLEASE NOTE:</b> query examples below, assume you are using \Simpletools\Mvc and the code is being used inside of a \Simpletools\Mvc\Model. However, the \Uuid plugin can be used in the same way, when using the plugin as a standalone class.
 					</p>
 
 					<div class="subgroup">
 						<p>
-							To generate a new UUID, you first need to create a new instance of \Simpletools\Db\Cassandra\Uuid:
+							To generate a new UUID, you first need to create a new instance of \Simpletools\Db\Cassandra\Type\Uuid:
 						</p>
-						<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Uuid;
+						<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Type\Uuid;
 
 $uuid = new Uuid());
 echo $uuid;
@@ -408,6 +408,65 @@ echo $uuid;
 						</p>
 						<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
 	->delete('COLUMN', new Uuid('UUID_STRING'))
+	->run();
+</code></pre>
+					</div>
+
+					<h2 id="autoincrement">\Simpletools\Db\Cassandra\Type\AutoIncrement</h2>
+					<p>
+						Simpletools\Db\Cassandra\Type\AutoIncrement can be used to generate and maintain auto increment id's for use in queries. Unfortunately, there is no built in Cassandra method to do this for you. Therefore, we have put together a plugin to handle this for you.
+					</p>
+
+					<div class="subgroup">
+						<h3>Setup</h3>
+						<p>
+							To start using \Simpletools\Db\Cassandra\Type\AutoIncrement, you first need to setup a table in cassandra. This table is used to store the counters. This can be done very easily by using the following built-in setup() method. This only needs to be run once, and should be removed from your code, after the tables have been created for you.
+						</p>
+						<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Type\AutoIncrement;
+
+AutoIncrement::settings([
+	'cluster'   => 'CLUSTER_NAME',
+	'keyspace'  => 'KEYSPACE',
+	'table'     => 'counter_table'
+]);
+
+AutoIncrement::setup();</code></pre>
+					</div>
+					<div class="subgroup">
+						<h3>Usage</h3>
+						<p><b>PLEASE NOTE:</b> \AutoIncrement returns id's as BigInt's. Therefore, you need to ensure that the column data type in Cassandra is set to "BIGINT". Alternatively, you can cast the returned id, to a standard integer, before you use it in \Query.</p>
+						<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Type\AutoIncrement;
+
+AutoIncrement::settings([
+	'cluster'   => 'CLUSTER_NAME',
+	'keyspace'  => 'KEYSPACE',
+	'table'     => 'counter_table'
+]);
+
+$id = new AutoIncrement('COUNTER_NAME'));
+echo $id->value();
+/* Output: 1 */</code></pre>
+
+						<p>
+							<b>PLEASE NOTE:</b> query examples below, assume you are using \Simpletools\Mvc and the code is being used inside of a \Simpletools\Mvc\Model. However, the \AutoIncrement plugin can be used in the same way, when using the plugin as a standalone class.
+						</p>
+						<p>
+							The generated id can then be used in an <b>INSERT</b> query:
+						</p>
+						<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
+	->set([
+		'COLUMN_1' => $id,
+		'COLUMN_2' => 'VALUE_2',
+		'COLUMN_3' => 'VALUE_3',
+	])
+	->run();
+</code></pre>
+
+						<p>
+							For usage inside a <b>SELECT</b>/<b>UPDATE</b>/<b>DELETE</b> query's, integers need to be casted to BigInt's, prior to passing them to the query builder (unless you are passing an already generated \AutoIncrement class instance, like the example above: $id):
+						</p>
+						<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
+	->delete('COLUMN', new BigInt(1)
 	->run();
 </code></pre>
 					</div>
@@ -451,11 +510,14 @@ echo $uuid;
 							</ul>
 						</li>
 						<li>
-							<a href="#uuid" target="_self">\Uuid</a>
+							<a href="#type" target="_self">\Type</a>
+							<ul class="nav nav-stacked">
+								<li><a href="#uuid">\Uuid</a></li>
+								<li><a href="#autoincrement">\AutoIncrement</a></li>
+							</ul>
 						</li>
 					</ul>
 				</nav>
-
 			</div>
 		</div>
 	</div>
