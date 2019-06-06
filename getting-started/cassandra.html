@@ -402,14 +402,6 @@ echo $uuid;
 	])
 	->run();
 </code></pre>
-
-						<p>
-							For usage inside a <b>SELECT</b>/<b>UPDATE</b>/<b>DELETE</b> query's, UUID's need to be prepared, prior to passing them to the query builder (unless you are passing an already generated \Uuid class instance, like the example above: $uuid):
-						</p>
-						<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
-	->delete('COLUMN', new Uuid('UUID_STRING'))
-	->run();
-</code></pre>
 					</div>
 
 					<h2 id="autoincrement">\Simpletools\Db\Cassandra\Type\AutoIncrement</h2>
@@ -461,13 +453,37 @@ echo $id->value();
 	])
 	->run();
 </code></pre>
+					</div>
+				</section>
+				<section id="batch" class="group">
+					<h2 id="uuid">\Simpletools\Db\Cassandra\Batch</h2>
+					<p>
+						Simpletools\Db\Cassandra\Batch can be used to combine multiple write queries, to be run in order. If one or more queries in the batch are invalid or fail to run, none of the queries will be run. This is useful in cases where you need to ensure a query has been run successfully, before going on the run the following query.
+					</p>
 
+					<div class="subgroup">
 						<p>
-							For usage inside a <b>SELECT</b>/<b>UPDATE</b>/<b>DELETE</b> query's, integers need to be casted to BigInt's, prior to passing them to the query builder (unless you are passing an already generated \AutoIncrement class instance, like the example above: $id):
+							An example batch query would be:
 						</p>
-						<pre class="line-php"><code class="language-php">$this->TABLE_NAME()
-	->delete('COLUMN', new BigInt(1)
-	->run();
+						<pre class="line-php"><code class="language-php">use Simpletools\Db\Cassandra\Query;
+
+$batch = new Simpletools\Db\Cassandra\Batch();
+$b = $batch
+    ->add(
+        (new Query('user'))->set([
+            'COLUMN_1' => 'VALUE_1',
+            'COLUMN_2' => 'VALUE_2'
+        ])
+    )
+    ->add(
+        (new Query('user'))->delete('COLUMN_1','VALUE_1')
+    );
+
+echo $b->getQuery();
+
+OR
+
+$b->run();
 </code></pre>
 					</div>
 				</section>
@@ -515,6 +531,9 @@ echo $id->value();
 								<li><a href="#uuid">\Uuid</a></li>
 								<li><a href="#autoincrement">\AutoIncrement</a></li>
 							</ul>
+						</li>
+						<li>
+							<a href="#batch" target="_self">\Batch</a>
 						</li>
 					</ul>
 				</nav>
